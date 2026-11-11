@@ -197,6 +197,26 @@ details p{margin-top:8px;opacity:.88}
 .rv-cta b{display:block;font:900 22px Overpass;text-transform:uppercase}
 .rv-cta span{opacity:.85}
 .rv-score{margin-top:14px;font-size:13px;opacity:.6}
+.wx-chip{display:inline-flex;align-items:center;gap:8px;margin:14px 0 0 10px;background:rgba(29,36,18,.7);border:1px solid var(--linha);color:var(--creme);text-decoration:none;border-radius:30px;padding:5px 12px;font:800 13px Overpass;vertical-align:middle}
+.wx{margin-top:22px;border:1px solid var(--linha);border-radius:14px;background:rgba(18,48,74,.35);padding:20px;display:grid;gap:18px;grid-template-columns:260px 1fr}
+.wx-main{display:flex;align-items:center;gap:10px;margin:6px 0}
+.wx-ic{font-size:40px;line-height:1}
+.wx-main b{font:900 44px/1 Overpass}
+.wx-main span:last-child{font:800 15px Overpass;text-transform:uppercase;opacity:.9}
+.wx-now p{font-size:14px;opacity:.85}
+.wx-now p.alerta{color:var(--areia);font-weight:600}
+.wx-hours{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;align-self:center}
+.wx-h{flex:none;min-width:62px;text-align:center;border-radius:10px;background:rgba(248,240,208,.06);padding:8px 6px;font:800 13px Overpass}
+.wx-h i{display:block;font-style:normal;font-size:20px;margin:3px 0}
+.wx-h small{display:block;font:600 11px Overpass;color:#8ec5ff}
+.wx-days{grid-column:1/-1;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.wx-dd{border-radius:10px;border:1px solid var(--linha);padding:10px 12px;display:flex;align-items:center;gap:10px;font:800 14px Overpass}
+.wx-dd.fds{border-color:var(--ouro);background:rgba(225,132,4,.1)}
+.wx-dd i{font-style:normal;font-size:26px}
+.wx-dd small{display:block;font:600 12px Overpass;opacity:.8}
+.wx-dd small.ch{color:#8ec5ff;opacity:1}
+.wx-src{grid-column:1/-1;font-size:11px;opacity:.5}
+@media(max-width:700px){.wx{grid-template-columns:1fr}.wx-days{grid-template-columns:1fr 1fr}.wx-dd{padding:8px;gap:6px;font-size:13px}.wx-dd i{font-size:22px}.wx-chip{margin-left:0}}
 footer{padding:50px 0 90px;text-align:center;border-top:1px solid var(--linha);font-size:14px}
 footer .tag2{font:900 clamp(22px,4vw,34px) Overpass;text-transform:uppercase;margin-bottom:12px}
 footer a{margin:0 8px}
@@ -215,13 +235,14 @@ footer a{margin:0 8px}
 
 <nav id="nav"><div class="wrap">
   <a class="brand" href="#topo"><img class="logo" src="img/logo-bosque-sm.png" alt="Bosque Estrada Parque"><b>Bosque Estrada Parque<small>Km 94 · Itu/SP</small></b></a>
-  <div class="links"><a href="#fds">Agenda</a><a href="#gastronomia">Gastronomia</a><a href="#viva">Viva o Bosque</a><a href="#visita">Como chegar</a><a href="#faq">Dúvidas</a></div>
+  <div class="links"><a href="#fds">Agenda</a><a href="#clima">Clima</a><a href="#gastronomia">Gastronomia</a><a href="#viva">Viva o Bosque</a><a href="#visita">Como chegar</a><a href="#faq">Dúvidas</a></div>
   <div class="soc nav-soc"><a href="https://www.instagram.com/bosqueestradaparque/?utm_source=site" target="_blank" rel="noopener" data-ev="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>Instagram</span></a><a href="https://www.facebook.com/share/1EH24jr9qg/" target="_blank" rel="noopener" data-ev="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.6V14h2.8v8z"/></svg><span>Facebook</span></a><a href="https://www.tiktok.com/@bosque.estrada.pa" target="_blank" rel="noopener" data-ev="tiktok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg><span>TikTok</span></a><a href="https://www.youtube.com/channel/UCt4hiMCiFigPsZV6q_hJ8zg" target="_blank" rel="noopener" data-ev="youtube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9L15.3 12z"/></svg><span>YouTube</span></a></div>
 </div></nav>
 
 <header class="hero" id="topo"><div class="wrap">
   <img class="hlogo" src="img/logo-bosque.png" alt="Bosque Estrada Parque — logo oficial">
   <span class="km"><img src="img/shield-rota312.png" alt="" aria-hidden="true">Rota SP-312 · Km 94 · Estrada Parque dos Romeiros</span>
+  <a class="wx-chip" id="wx-chip" href="#clima" hidden></a>
   <h1>O destino de quem <span>vive a estrada.</span></h1>
   <p>Comida de verdade, música ao vivo e natureza. Sábados, domingos e feriados, em Itu.</p>
   <div class="cta">
@@ -241,6 +262,18 @@ footer a{margin:0 8px}
   <div class="sh"><span class="num">01 —</span><h2 id="fds-tit">Próximo fim de semana</h2><p>Música ao vivo, boa comida e bons encontros.</p></div>
   <div class="wk" id="wk"></div>
   <div class="rain"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9A82C" stroke-width="2"><path d="M20 15a4 4 0 0 0-3-6.7A6 6 0 0 0 5 10a4 4 0 0 0 1 8h11"/><path d="M8 20l-1 2M12 20l-1 2M16 20l-1 2"/></svg>Em caso de chuva, a música ao vivo poderá ser cancelada sem aviso prévio.</div>
+
+  <!-- CLIMA AO VIVO (Open-Meteo, sem chave) -->
+  <div class="wx" id="clima" hidden>
+    <div class="wx-now">
+      <span class="mono">Agora no Bosque · Km 94</span>
+      <div class="wx-main"><span class="wx-ic" id="wx-ic"></span><b id="wx-t"></b><span id="wx-d"></span></div>
+      <p id="wx-msg"></p>
+    </div>
+    <div class="wx-hours" id="wx-hours"></div>
+    <div class="wx-days" id="wx-days"></div>
+    <small class="wx-src">Previsão atualizada automaticamente · Open-Meteo</small>
+  </div>
 
   <div class="mesbox" id="mesbox" hidden>
     <div><h3 id="mes-tit">Agenda do mês</h3><ol class="agenda" id="mes-list"></ol></div>
@@ -386,6 +419,39 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(!
   if(window.fbq)fbq("trackCustom",ev);if(window.gtag)gtag("event",ev);});
 // nav sólida ao rolar
 const nav=document.getElementById("nav");addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>40),{passive:true});
+
+
+// ---------- CLIMA AO VIVO (Open-Meteo) ----------
+const WX_LAT=-23.288, WX_LON=-47.235; // Km 94 da SP-312 (aprox.) — ajuste se quiser
+const WMO={0:["☀️","Céu limpo"],1:["🌤️","Poucas nuvens"],2:["⛅","Parcialmente nublado"],3:["☁️","Nublado"],45:["🌫️","Neblina"],48:["🌫️","Neblina"],51:["🌦️","Garoa fraca"],53:["🌦️","Garoa"],55:["🌧️","Garoa forte"],61:["🌧️","Chuva fraca"],63:["🌧️","Chuva"],65:["🌧️","Chuva forte"],80:["🌦️","Pancadas de chuva"],81:["🌧️","Pancadas de chuva"],82:["⛈️","Chuva forte"],95:["⛈️","Trovoadas"],96:["⛈️","Trovoadas com granizo"],99:["⛈️","Trovoadas com granizo"]};
+const wmo=c=>WMO[c]||WMO[[0,1,2,3,45,51,61,80,95].filter(k=>k<=c).pop()]||["🌡️",""];
+const ehChuva=c=>c>=51;
+function clima(){
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${WX_LAT}&longitude=${WX_LON}&current=temperature_2m,weather_code,precipitation,is_day&hourly=temperature_2m,weather_code,precipitation_probability&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FSao_Paulo&forecast_days=7`;
+  fetch(u).then(r=>r.json()).then(d=>{
+    const c=d.current,[ic,desc]=wmo(c.weather_code),t=Math.round(c.temperature_2m);
+    const lua=!c.is_day&&c.weather_code<=1?"🌙":ic;
+    document.getElementById("wx-ic").textContent=lua;
+    document.getElementById("wx-t").textContent=t+"°";
+    document.getElementById("wx-d").textContent=desc;
+    const chip=document.getElementById("wx-chip");chip.textContent=`${lua} Agora no Bosque: ${t}° · ${desc}`;chip.hidden=false;
+    // próximas horas
+    const agora=new Date(c.time),H=d.hourly;let i0=H.time.findIndex(x=>new Date(x)>=agora);if(i0<0)i0=0;
+    const prox=[];for(let i=i0;i<Math.min(i0+12,H.time.length);i++)prox.push(i);
+    const chuvaLogo=prox.slice(0,4).some(i=>H.precipitation_probability[i]>=50);
+    const msg=document.getElementById("wx-msg");
+    if(ehChuva(c.weather_code)||c.precipitation>0){msg.textContent="Está chovendo agora no Bosque. A música ao vivo pode ser cancelada.";msg.className="alerta";}
+    else if(chuvaLogo){msg.textContent="Chance de chuva nas próximas horas. Vale conferir antes de sair.";msg.className="alerta";}
+    else msg.textContent="Tempo firme agora na estrada. Bom passeio!";
+    document.getElementById("wx-hours").innerHTML=prox.map(i=>`<div class="wx-h">${H.time[i].slice(11,13)}h<i>${wmo(H.weather_code[i])[0]}</i>${Math.round(H.temperature_2m[i])}°<small>💧${H.precipitation_probability[i]??0}%</small></div>`).join("");
+    // próximos dias, destacando sáb/dom
+    const D=d.daily;
+    document.getElementById("wx-days").innerHTML=D.time.map((x,k)=>{const dt=new Date(x+"T12:00");const w=dt.getDay();
+      return `<div class="wx-dd${w===0||w===6?" fds":""}"><i>${wmo(D.weather_code[k])[0]}</i><span>${k===0?"Hoje":DIAS[w].slice(0,3)} ${x.slice(8,10)}/${x.slice(5,7)}<small>${Math.round(D.temperature_2m_min[k])}° / ${Math.round(D.temperature_2m_max[k])}°</small><small class="ch">💧 ${D.precipitation_probability_max[k]??0}% de chuva</small></span></div>`}).join("");
+    document.getElementById("clima").hidden=false;
+  }).catch(()=>{});
+}
+clima();setInterval(clima,15*60*1000);
 
 function montaAgenda(ag){
   const wk=document.getElementById("wk");

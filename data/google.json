@@ -1,16 +1,26 @@
 {
  "maps": "https://maps.app.goo.gl/sqc8bJM8nvUfeSbk9",
- "review_url": "https://search.google.com/local/writereview?placeid=ChIJM5Q1jmdFz5QRegLMkx3J3Hw",
- "rating": 3.7,
- "total": 236,
- "reviews": [
+ "review_url": "https://maps.app.goo.gl/sqc8bJM8nvUfeSbk9",
+ "rating": null,
+ "total": null,
+ "reviews": [],
+ "fixas": [
+  {
+   "autor": "Fernanda Cunha",
+   "texto": "Ambiente rústico. Comida saborosaaa.... A costela estava desmanchando😋🍖. Música ao vivo. Vale a pena conhecer"
+  },
+  {
+   "autor": "Heverton Lira",
+   "texto": "Aah que esperiência incrível... O lugar é de uma simplicidade e elegância rústica, que nos abraça. A comida com sabor impecável, de roça, de casa de vó. E de qualidade. Música agradabilíssima! E o atendimento.... MARAVILHOSO! Se voltou, sempre que possível e indico com toda certeza!"
+  },
+  {
+   "autor": "Jonatas Mendes",
+   "texto": "Excelente almoço o bife ancho estava excelente e o atendimento foi muito bom. Com um espaço infantil com vários brinquedos, pra criançada é diversão garantida!"
+  },
   {
    "autor": "Canal do Heitor - Oficial",
-   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjV382hM2WSURKc7StxLh_u43Ou4l8QCvd8DoCtMZscyg8oZ-V0R=s128-c0x00000000-cc-rp-mo",
-   "texto": "Quarta vez aqui! E hoje, domingo, como eu estava sozinho resolvi trocar a parrilha de sempre por uma linguiça na brasa que estava excelente e chegou em menos de 20 minutos, sendo que o tempo de espera é de 40 e a casa estava cheia. Das outras vezes, à espera foi de 40 a 60 minutos, mas dentro do esperado e é domingo, estou a passeio. A música e o cantor são um caso a parte, pois não dá vontade de ir embora. O time da",
-   "quando": "6 meses atrás",
-   "publicado": "2026-04-19T17:43:39.053348304Z"
+   "texto": "Quarta vez aqui! E hoje, domingo, como eu estava sozinho resolvi trocar a parrilha de sempre por uma linguiça na brasa que estava excelente e chegou em menos de 20 minutos, sendo que o tempo de espera é de 40 e a casa estava cheia. Das outras vezes, à espera foi de 40 a 60 minutos, mas dentro do esperado e é domingo, estou a passeio. A música e o cantor são um caso a parte, pois não dá vontade de ir embora. O time da churrasqueira estava a todo vapor. Se você quer pressa e correria, o lugar certamente não é aqui 🤣🤣🤣🤣"
   }
  ],
- "fixas": []
+ "nota_minima": 4.3
 }

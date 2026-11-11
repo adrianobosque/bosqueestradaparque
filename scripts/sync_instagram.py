@@ -4,9 +4,10 @@ baixa as imagens para data/img e grava data/instagram.json.
 Requer o secret IG_TOKEN (token de longa duração da "Instagram API with Instagram Login").
 Roda no GitHub Actions (ver .github/workflows/instagram.yml).
 """
-import json, os, re, sys, urllib.request, urllib.parse, datetime, pathlib
+import json, os, re, sys, urllib.request, urllib.parse, urllib.error, datetime, pathlib
 
 TOKEN = os.environ.get("IG_TOKEN")
+IG_USER_ID = os.environ.get("IG_USER_ID") or "17841474228811076"  # @bosqueestradaparque
 LIMIT = 30
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 IMG = ROOT / "data" / "img"
@@ -17,8 +18,11 @@ EVENTOS = r"evento|encontro|motoclube|moto ?clube|carros antigos|festa|festival|
 
 
 def get(url):
-    with urllib.request.urlopen(url, timeout=30) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(url, timeout=30) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"{e.code} {e.read().decode(errors='ignore')[:300]}") from None
 
 
 def categoria(txt):
@@ -88,15 +92,26 @@ def agenda_do_post(cap, img):
 def main():
     if not TOKEN:
         sys.exit("IG_TOKEN ausente")
-    # mantém o token vivo (válido por 60 dias; cada refresh estende o prazo)
-    try:
-        get("https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" + TOKEN)
-    except Exception as e:
-        print("refresh falhou (segue):", e)
-
     fields = "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp"
-    url = f"https://graph.instagram.com/me/media?fields={fields}&limit={LIMIT}&access_token={urllib.parse.quote(TOKEN)}"
-    items = get(url).get("data", [])
+    q = f"fields={fields}&limit={LIMIT}&access_token={urllib.parse.quote(TOKEN)}"
+    # 1) token do "login unificado"/usuário do sistema (Facebook Graph) — não expira
+    # 2) token do "login do Instagram" (graph.instagram.com) — renovado a cada execução
+    items = None
+    for url in (f"https://graph.facebook.com/v21.0/{IG_USER_ID}/media?{q}",
+                f"https://graph.instagram.com/me/media?{q}"):
+        try:
+            items = get(url).get("data", [])
+            print("ok:", url.split("?")[0])
+            if "graph.instagram.com" in url:
+                try:
+                    get("https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" + TOKEN)
+                except Exception as e:
+                    print("refresh falhou (segue):", e)
+            break
+        except Exception as e:
+            print("falhou:", url.split("?")[0], e)
+    if items is None:
+        sys.exit("Não consegui ler o Instagram com esse token")
 
     IMG.mkdir(parents=True, exist_ok=True)
     keep, posts, agenda = set(), [], None

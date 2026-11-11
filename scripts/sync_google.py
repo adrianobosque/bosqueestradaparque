@@ -21,7 +21,7 @@ def main():
     novas = []
     for rv in p.get("reviews", []):
         txt = ((rv.get("originalText") or rv.get("text") or {}).get("text") or "").strip()
-        if rv.get("rating") == 5 and len(txt) >= 40:
+        if rv.get("rating") == 5 and len(txt) >= 20:
             a = rv.get("authorAttribution", {})
             novas.append({"autor": a.get("displayName"), "foto": a.get("photoUri"),
                           "texto": txt[:420], "quando": rv.get("relativePublishTimeDescription"),

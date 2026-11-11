@@ -1,0 +1,32 @@
+name: Sincronizar Instagram e Google
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/sync_instagram.py
+        continue-on-error: true
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      - run: python scripts/sync_google.py
+        continue-on-error: true
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+      - run: |
+          git config user.name "bosque-bot"
+          git config user.email "bot@bosqueestradaparque.com.br"
+          git add data
+          git diff --cached --quiet || (git commit -m "Atualiza agenda do Instagram e Google" && git push)

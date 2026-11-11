@@ -1,0 +1,12 @@
+{"mes":"Novembro","ano":2026,"cartaz":"data/agenda-novembro.png","itens":[
+{"data":"01/11","artista":"Bruno Vallente","show":"13h","cafe":"8h"},
+{"data":"02/11","artista":"Duo Aragramma","show":"12h30","cafe":"10h","obs":"Finados"},
+{"data":"07/11","artista":"Be Gadu","show":"12h30","cafe":"10h"},
+{"data":"08/11","artista":"Pamela RockStation","show":"13h","cafe":"8h"},
+{"data":"14/11","artista":"Ani Belle","show":"12h30","cafe":"10h"},
+{"data":"15/11","artista":"Rafa LeBeats","show":"13h","cafe":"8h","obs":"Feriado"},
+{"data":"20/11","artista":"Blind Smoke","show":"12h30","cafe":"10h","obs":"Feriado"},
+{"data":"21/11","artista":"Gu Salvator","show":"12h30","cafe":"10h"},
+{"data":"22/11","artista":"Johnny Voxx","show":"13h","cafe":"8h"},
+{"data":"28/11","artista":"Leo Basílio","show":"12h30","cafe":"10h"},
+{"data":"29/11","artista":"Geraldo Barba Blue","show":"13h","cafe":"8h"}]}

@@ -1,1 +1,411 @@
-{"updated":null,"posts":[]}
+{
+ "updated": "2026-11-11T21:39:42.459135Z",
+ "agenda": {
+  "mes": "Novembro",
+  "cartaz": "data/img/17992146621062410.jpg",
+  "itens": [
+   {
+    "data": "02/11",
+    "artista": "01 e · de",
+    "show": null,
+    "obs": "Feriado"
+   },
+   {
+    "data": "01/11",
+    "artista": "Bruno Vallente",
+    "show": "13h"
+   },
+   {
+    "data": "02/11",
+    "artista": "Duo Aragramma",
+    "show": "12h30"
+   },
+   {
+    "data": "08/11",
+    "artista": "07 e",
+    "show": null
+   },
+   {
+    "data": "07/11",
+    "artista": "Phil Aygah",
+    "show": "12h30"
+   },
+   {
+    "data": "08/11",
+    "artista": "Pamela Rock Station",
+    "show": "13h"
+   },
+   {
+    "data": "15/11",
+    "artista": "14 e",
+    "show": null
+   },
+   {
+    "data": "14/11",
+    "artista": "Ani Belle",
+    "show": "12h30"
+   },
+   {
+    "data": "15/11",
+    "artista": "Rafa LeBeats",
+    "show": "13h"
+   },
+   {
+    "data": "22/11",
+    "artista": "20 a · Feriadão da Consciência Negra",
+    "show": null
+   },
+   {
+    "data": "20/11",
+    "artista": "Blind Smoke",
+    "show": "12h30"
+   },
+   {
+    "data": "21/11",
+    "artista": "Gu Salvator",
+    "show": "12h30"
+   },
+   {
+    "data": "22/11",
+    "artista": "Johnny Voxx",
+    "show": "13h"
+   },
+   {
+    "data": "29/11",
+    "artista": "28 e",
+    "show": null
+   },
+   {
+    "data": "28/11",
+    "artista": "Leo Basílio",
+    "show": "12h30"
+   },
+   {
+    "data": "29/11",
+    "artista": "Geraldo Barba Blue",
+    "show": "13h"
+   }
+  ]
+ },
+ "posts": [
+  {
+   "id": "18117040256605059",
+   "categoria": "musica",
+   "data_evento": "14/11",
+   "horario": "10h",
+   "titulo": "🏍️🎸 FERIADÃO COM MÚSICA AO VIVO NO BOSQUE! 🌲🔥",
+   "legenda": "🏍️🎸 FERIADÃO COM MÚSICA AO VIVO NO BOSQUE! 🌲🔥\n\nO próximo fim de semana promete! Dois dias de boa música, comida de verdade e aquele clima gostoso de quem pega a estrada para aproveitar a vida!\n\n🎤 SÁBADO | 14/11 — ANI BELLE\n☕ Café Western Texano a partir das 10h\n🎶 Show ao vivo a partir das 12h30\n\n🎸 DOMINGO | 15/11 — RAFA LeBEATS\n🇧🇷 Feriado da Proclamação da República\n☕ Café a partir das 8h\n🎶 Show a",
+   "imagem": "data/img/18117040256605059.jpg",
+   "permalink": "https://www.instagram.com/p/DfiyXAnx_xR/",
+   "publicado": "2026-11-10T02:03:24+0000"
+  },
+  {
+   "id": "18082702013348320",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Por que não fazemos mais café colonial? ☕🌲",
+   "legenda": "Por que não fazemos mais café colonial? ☕🌲\n\nNosso café colonial foi um sucesso, mas nem sempre sucesso de público significa uma operação sustentável.\n\nNum domingo de sol, recebemos centenas de pessoas. Num domingo de chuva, o Bosque pode ficar vazio. E o desperdício torna essa conta inviável.\n\nPor isso, desde maio, oferecemos as Bandejas Western Texanas: um café da manhã à la carte, mais simples, ",
+   "imagem": "data/img/18082702013348320.jpg",
+   "permalink": "https://www.instagram.com/reel/DffFHFFxziH/",
+   "publicado": "2026-11-08T15:33:38+0000"
+  },
+  {
+   "id": "17918515995264237",
+   "categoria": "musica",
+   "data_evento": "07/11",
+   "horario": "10h",
+   "titulo": "🏍️🎸 O PRÓXIMO FINAL DE SEMANA JÁ TEM DESTINO: BOSQUE ESTRADA PARQUE! 🌲🔥",
+   "legenda": "🏍️🎸 O PRÓXIMO FINAL DE SEMANA JÁ TEM DESTINO: BOSQUE ESTRADA PARQUE! 🌲🔥\n\nDois dias de música ao vivo, comida boa, natureza e aquele clima que só quem pega a estrada conhece!\n\n🎸 SÁBADO | 07/11 — PHIL AYGAH\n☕ Café Western Texano a partir das 10h\n🎶 Show ao vivo a partir das 12h30\n\n🎤 DOMINGO | 08/11 — PAMELA ROCKSTATION\n☕ Café a partir das 8h\n🎶 Show ao vivo a partir das 13h\n\n🍖 Almoço especial e BBQ\n🏍️",
+   "imagem": "data/img/17918515995264237.jpg",
+   "permalink": "https://www.instagram.com/p/DfSSTihRzCM/",
+   "publicado": "2026-11-03T16:15:08+0000"
+  },
+  {
+   "id": "18025129655714221",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "",
+   "legenda": "",
+   "imagem": "data/img/18025129655714221.jpg",
+   "permalink": "https://www.instagram.com/reel/DfNl92oSBZK/",
+   "publicado": "2026-11-01T21:41:02+0000"
+  },
+  {
+   "id": "17970083373198811",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Ruy toca 🎻 desde pequenino 🤣🤣🤣🤠✌🏻🫶🏻",
+   "legenda": "Ruy toca 🎻 desde pequenino 🤣🤣🤣🤠✌🏻🫶🏻",
+   "imagem": "data/img/17970083373198811.jpg",
+   "permalink": "https://www.instagram.com/reel/DfNmEeKSXKj/",
+   "publicado": "2026-11-01T20:38:23+0000"
+  },
+  {
+   "id": "18032436515685928",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Super show de brunovalentte com dois TT’s ✌🏻✌🏻 durante nosso almoço de domingo!!",
+   "legenda": "Super show de brunovalentte com dois TT’s ✌🏻✌🏻 durante nosso almoço de domingo!!",
+   "imagem": "data/img/18032436515685928.jpg",
+   "permalink": "https://www.instagram.com/reel/DfNlsLXyLvu/",
+   "publicado": "2026-11-01T20:34:12+0000"
+  },
+  {
+   "id": "18089908877282179",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🏆 O Bosque Estrada Parque está entre os TOP 10 restaurantes de Itu pelo Restaurant Guru 20",
+   "legenda": "🏆 O Bosque Estrada Parque está entre os TOP 10 restaurantes de Itu pelo Restaurant Guru 2026!\n\nE o mais especial: esse reconhecimento vem das avaliações de vocês! ❤️\n\nNosso muito obrigado a cada visitante que acredita no Bosque e faz parte dessa história!\n\n🌲 O destino de quem vive a estrada! 🏍️🤠✌🏻",
+   "imagem": "data/img/18089908877282179.jpg",
+   "permalink": "https://www.instagram.com/reel/DfM1lS-RJiW/",
+   "publicado": "2026-11-01T13:27:59+0000"
+  },
+  {
+   "id": "18454122910193301",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Elvis é o Rei 👑",
+   "legenda": "Elvis é o Rei 👑",
+   "imagem": "data/img/18454122910193301.jpg",
+   "permalink": "https://www.instagram.com/reel/DfLIt6GSE4B/",
+   "publicado": "2026-10-31T21:38:58+0000"
+  },
+  {
+   "id": "17957434443276505",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Showzão do Rafa no nosso almoço de sábado p fecha outubro!!",
+   "legenda": "Showzão do Rafa no nosso almoço de sábado p fecha outubro!!",
+   "imagem": "data/img/17957434443276505.jpg",
+   "permalink": "https://www.instagram.com/reel/DfLIirVyVEn/",
+   "publicado": "2026-10-31T21:38:03+0000"
+  },
+  {
+   "id": "17924999142442162",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🏆 O BOSQUE ESTÁ ENTRE OS 10 MELHORES RESTAURANTES DE ITU!",
+   "legenda": "🏆 O BOSQUE ESTÁ ENTRE OS 10 MELHORES RESTAURANTES DE ITU!\n\nRecebemos o reconhecimento Restaurant Guru 2026 e estamos entre os 10 primeiros colocados no ranking de restaurantes de Itu!\n\nEssa conquista tem um significado especial: ela nasce das avaliações de quem viveu a experiência do Bosque. ❤️\n\nA cada família, motociclista, amigo e visitante que escolheu pegar a estrada para nos conhecer, nosso m",
+   "imagem": "data/img/17924999142442162.jpg",
+   "permalink": "https://www.instagram.com/p/DfH-j7sxwEq/",
+   "publicado": "2026-10-30T16:10:47+0000"
+  },
+  {
+   "id": "17972048292193647",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "O Rafa toca 🎻 desde pequenininho 🤣🤣🤣🤣 parece facil brunovalentte",
+   "legenda": "O Rafa toca 🎻 desde pequenininho 🤣🤣🤣🤣 parece facil brunovalentte",
+   "imagem": "data/img/17972048292193647.jpg",
+   "permalink": "https://www.instagram.com/reel/DezTBaJRh6y/",
+   "publicado": "2026-10-22T15:25:27+0000"
+  },
+  {
+   "id": "18123049153924049",
+   "categoria": "musica",
+   "data_evento": "31/10",
+   "horario": "12h30",
+   "titulo": "🔥🏍️ FERIADÃO PROLONGADO NO BOSQUE! 3 DIAS DE MÚSICA, ESTRADA E BONS MOMENTOS! 🌲🎸",
+   "legenda": "🔥🏍️ FERIADÃO PROLONGADO NO BOSQUE! 3 DIAS DE MÚSICA, ESTRADA E BONS MOMENTOS! 🌲🎸\n\nOutubro se despede e novembro chega daquele jeito que a gente gosta: rock’n’roll, comida de verdade, natureza e muita gente boa reunida no KM 94!\n\nNo Bosque tem programação especial nos três dias! 🤘\n\n🎸 SÁBADO • 31/10\n🔥 Rafa LeBeats\n🎶 Show a partir das 12h30\n☕ Café Western Texano a partir das 10h\n\n🎻 DOMINGO • 01/11\n🔥 ",
+   "imagem": "data/img/18123049153924049.jpg",
+   "permalink": "https://www.instagram.com/p/DeuCpCxxNgV/",
+   "publicado": "2026-10-20T14:27:35+0000"
+  },
+  {
+   "id": "18193270108393935",
+   "categoria": "musica",
+   "data_evento": "24/10",
+   "horario": "12h30",
+   "titulo": "🔥🏍️ MAIS UM FINAL DE SEMANA DE ROCK, ESTRADA E BONS MOMENTOS NO BOSQUE! 🌲🤘",
+   "legenda": "🔥🏍️ MAIS UM FINAL DE SEMANA DE ROCK, ESTRADA E BONS MOMENTOS NO BOSQUE! 🌲🤘\n\nA receita é aquela que a gente ama: música boa, comida de verdade, natureza, amigos e muita energia positiva!\n\n🎸 SÁBADO • 24/10\nPhil Aygah\n🕧 Música ao vivo a partir das 12h30\n\n🎤 DOMINGO • 25/10\nPamela Rock Station\n🕐 Música ao vivo a partir das 13h\n\n🇧🇷 ATENÇÃO AO HORÁRIO DE DOMINGO!\n\nExcepcionalmente, devido ao segundo turn",
+   "imagem": "data/img/18193270108393935.jpg",
+   "permalink": "https://www.instagram.com/p/Dery4EURIqN/",
+   "publicado": "2026-10-19T17:30:45+0000"
+  },
+  {
+   "id": "18119687309318191",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🎸🌲 TEM MOMENTOS QUE A GENTE NÃO QUER QUE ACABEM! ❤️",
+   "legenda": "🎸🌲 TEM MOMENTOS QUE A GENTE NÃO QUER QUE ACABEM! ❤️\n\nA música começa, a comida chega à mesa, os amigos se encontram e, de repente, a gente percebe que a vida acontece justamente nesses momentos. ✨\n\nCom a energia incrível da Pamela Rock Station, o Bosque ganhou mais uma daquelas tardes que ficam na memória. 🤘🔥\n\nRock’n’roll, mesas fartas, sorrisos, natureza e gente aproveitando a vida sem pressa.\n\nP",
+   "imagem": "data/img/18119687309318191.jpg",
+   "permalink": "https://www.instagram.com/reel/DecZyY4y-Cs/",
+   "publicado": "2026-10-13T18:02:03+0000"
+  },
+  {
+   "id": "18130662466686961",
+   "categoria": "musica",
+   "data_evento": "17/10",
+   "horario": "12h30",
+   "titulo": "🔥🏍️ A ESTRADA TEM DESTINO CERTO NESTE FINAL DE SEMANA! 🌲🤘",
+   "legenda": "🔥🏍️ A ESTRADA TEM DESTINO CERTO NESTE FINAL DE SEMANA! 🌲🤘\n\nDois dias de música boa, comida de verdade, natureza e aquela energia que só quem conhece o Bosque sabe!\n\n🎸 SÁBADO • 17/10\nFábio Buzatti — One Man Band Experience\n🕧 Música ao vivo a partir das 12h30\n\n🎸 DOMINGO • 18/10\nJohnny Voxx\n🕐 Música ao vivo a partir das 13h\n\n☕🤠 CAFÉ WESTERN TEXANO — NOVOS HORÁRIOS!\n\nA partir deste sábado, nosso café ",
+   "imagem": "data/img/18130662466686961.jpg",
+   "permalink": "https://www.instagram.com/p/Deb_ezoRcO5/",
+   "publicado": "2026-10-13T14:11:59+0000"
+  },
+  {
+   "id": "18178559932438072",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": "10h",
+   "titulo": "🤠☕ O CAFÉ WESTERN TEXANO AGORA ACOMPANHA O RITMO DA SUA ESTRADA! 🏍️🌲",
+   "legenda": "🤠☕ O CAFÉ WESTERN TEXANO AGORA ACOMPANHA O RITMO DA SUA ESTRADA! 🏍️🌲\n\nA gente ouviu, observou e entendeu: cada pessoa tem seu horário de pegar a estrada. E o Bosque quer fazer parte dessa jornada!\n\nPor isso, a partir de 17 de outubro, nosso Café Western Texano em bandejas ganha novos horários:\n\n🔥 SÁBADOS E FERIADOS\n☕ A partir das 10h\n🍳 Bandejas disponíveis até as 16h30\n\n☀️ DOMINGOS\n☕ Tudo segue no",
+   "imagem": "data/img/18178559932438072.jpg",
+   "permalink": "https://www.instagram.com/p/Deb_D0lxLTP/",
+   "publicado": "2026-10-13T14:08:19+0000"
+  },
+  {
+   "id": "18117946058054737",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Super show de giovanibossoficial duo no nosso almoço de domingo 🤠✌🏻",
+   "legenda": "Super show de giovanibossoficial duo no nosso almoço de domingo 🤠✌🏻",
+   "imagem": "data/img/18117946058054737.jpg",
+   "permalink": "https://www.instagram.com/reel/DeXKG35Rus6/",
+   "publicado": "2026-10-11T17:27:37+0000"
+  },
+  {
+   "id": "18107104802245233",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Sempre top!! 🤠✌🏻",
+   "legenda": "Sempre top!! 🤠✌🏻",
+   "imagem": "data/img/18107104802245233.jpg",
+   "permalink": "https://www.instagram.com/reel/DeXMWxRkT5l/",
+   "publicado": "2026-10-11T17:27:21+0000"
+  },
+  {
+   "id": "18113513378125431",
+   "categoria": "musica",
+   "data_evento": "10/10",
+   "horario": "12h30",
+   "titulo": "🔥 FINAL DE SEMANA PROLONGADO NO BOSQUE! 🌲🏍️",
+   "legenda": "🔥 FINAL DE SEMANA PROLONGADO NO BOSQUE! 🌲🏍️\n\nSão 3 dias de estrada, boa comida, natureza e música ao vivo no KM 94!\n\n🎸 SÁBADO • 10/10\nGu Salvator — a partir das 12h30\n\n🎸 DOMINGO • 11/10\nGiovani Boss — a partir das 13h\n\n🎸 SEGUNDA • 12/10 • FERIADO\nLeo Basilio — a partir das 13h\n🇧🇷 Nossa Senhora Aparecida + 🧒 Dia das Crianças\n\n☕ Todos os dias: Café Western Texano a partir das 8h\n🔥 Almoço & BBQ\n\nCham",
+   "imagem": "data/img/18113513378125431.jpg",
+   "permalink": "https://www.instagram.com/p/DeIod1gRY4n/",
+   "publicado": "2026-10-06T01:44:56+0000"
+  },
+  {
+   "id": "18114453029037730",
+   "categoria": "musica",
+   "data_evento": "04/10",
+   "horario": "9h30",
+   "titulo": "⚠️ ATENÇÃO AO HORÁRIO DESTE DOMINGO!",
+   "legenda": "⚠️ ATENÇÃO AO HORÁRIO DESTE DOMINGO!\n\nExcepcionalmente amanhã, 04/10, devido às eleições, o Bosque iniciará suas operações a partir das 9h30, para que nossa equipe tenha tempo para votar. 🇧🇷 \n\n☕ Café Western Texano a partir das 9h30\n🔥 Almoço, Parrilla & BBQ normalmente\n🎸 Música ao vivo com Geraldo Barba Blue às 13h\n\nDepois do voto, pega a estrada e vem pro Bosque! 🏍️🌲\n\n📍 Rota SP-312 • KM 94 • Itu/",
+   "imagem": "data/img/18114453029037730.jpg",
+   "permalink": "https://www.instagram.com/p/DeCEd61Ry23/",
+   "publicado": "2026-10-03T12:34:43+0000"
+  },
+  {
+   "id": "18089906525241578",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "QUEM GOSTA, VOLTA! 🫶🏻",
+   "legenda": "QUEM GOSTA, VOLTA! 🫶🏻\n\nE talvez essa seja uma das coisas mais bonitas que construímos por aqui.\n\nVolta de moto.\nVolta de carro.\nVolta com os filhos, com os amigos, com o cachorro.\nVolta pelo café, pela parrilla, pela música.\nVolta para encontrar a turma.\nOu simplesmente para sentar embaixo das árvores e deixar o mundo correr um pouco mais devagar.\n\nEm pouco mais de um ano, vimos milhares de pessoa",
+   "imagem": "data/img/18089906525241578.jpg",
+   "permalink": "https://www.instagram.com/p/Dd-E4Skxv5Q/",
+   "publicado": "2026-10-01T23:21:44+0000"
+  },
+  {
+   "id": "17919776106450408",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🏍️🧡 7 anos de estrada, liberdade e histórias!",
+   "legenda": "🏍️🧡 7 anos de estrada, liberdade e histórias!\n\nFoi especial demais receber as Aceleradas no Bosque para celebrar essa trajetória 🥳🥳🥳\n\nMulheres, motos, amizade, música e muita energia boa reunidas no lugar certo: na estrada! 🔥\n\nQue venham muitos quilômetros e muitos encontros pela frente! 🤘\n\nBosque Estrada Parque — o destino de quem vive a estrada 🤠✌🏻\n\n#Aceleradas #BosqueEstradaParque #RotaSP312 #M",
+   "imagem": "data/img/17919776106450408.jpg",
+   "permalink": "https://www.instagram.com/reel/Dd7i4fDR2in/",
+   "publicado": "2026-09-30T23:47:17+0000"
+  },
+  {
+   "id": "18090237848694793",
+   "categoria": "musica",
+   "data_evento": "03/10",
+   "horario": "12h30",
+   "titulo": "🔥 OUTUBRO COMEÇA NA ESTRADA! 🤘🌲",
+   "legenda": "🔥 OUTUBRO COMEÇA NA ESTRADA! 🤘🌲\n\nPrimeiro final de semana do mês no Bosque com Café Western Texano, Parrilla & BBQ e muita música ao vivo!\n\n🎸 SÁBADO • 03/10\n⭐ Duo Aragramma\n🕧 A partir das 12h30\n\n🎸 DOMINGO • 04/10\n⭐ Geraldo Barba Blue\n🕐 A partir das 13h\n\nE nos dois dias, a experiência começa cedo: Café Western Texano a partir das 8h. ☕🥓🔥\n\nÉ estrada, natureza, amigos, boa comida e aquela trilha sono",
+   "imagem": "data/img/18090237848694793.jpg",
+   "permalink": "https://www.instagram.com/p/Dd4UfevyCjy/",
+   "publicado": "2026-09-29T17:42:37+0000"
+  },
+  {
+   "id": "18489220579107876",
+   "categoria": "musica",
+   "data_evento": "03/10",
+   "horario": "12h30",
+   "titulo": "Outubro chegou — e a estrada já tem trilha sonora. 🤘🌲🏍️",
+   "legenda": "Outubro chegou — e a estrada já tem trilha sonora. 🤘🌲🏍️\n\nUm mês inteiro de encontros, boa comida e música ao vivo no Bosque Estrada Parque.\n\n🎸 PROGRAMAÇÃO DE OUTUBRO\n\nSÁBADO · 03/10 — Duo Aragramma\nDOMINGO · 04/10 — Geraldo Barba Blue\n\nSÁBADO · 10/10 — Gu Salvator\nDOMINGO · 11/10 — Giovani Boss\nSEGUNDA · 12/10 · FERIADO DE NOSSA SENHORA APARECIDA — Leo Basilio\n\nSÁBADO · 17/10 — Fabio Buzatti\nDOMIN",
+   "imagem": "data/img/18489220579107876.jpg",
+   "permalink": "https://www.instagram.com/p/Dd2k9uAx7J1/",
+   "publicado": "2026-09-29T01:29:57+0000"
+  },
+  {
+   "id": "18128246830747320",
+   "categoria": "musica",
+   "data_evento": "26/09",
+   "horario": "8h",
+   "titulo": "Fechando setembro do jeito que a gente gosta: estrada, música boa, comida de verdade e gra",
+   "legenda": "Fechando setembro do jeito que a gente gosta: estrada, música boa, comida de verdade e grandes encontros. 🤠🔥🏍️\n\nNeste fim de semana, o Bosque preparou uma programação especial:\n\n☕ SÁBADO • 26/09\nA partir das 8h — Café da Manhã Western Texano\n🎸 12h30 — Laís Gonzalez ao vivo\nCountry • Folk • Pop Rock\n\n🏁 DOMINGO • 27/09 — ESPECIAL ACELERADAS\nA partir das 8h — Café da Manhã Western Texano\n🏍️ 10h — Rec",
+   "imagem": "data/img/18128246830747320.jpg",
+   "permalink": "https://www.instagram.com/p/DdkDAELSdng/",
+   "publicado": "2026-09-21T20:45:34+0000"
+  },
+  {
+   "id": "18074005562436075",
+   "categoria": "musica",
+   "data_evento": "12/09",
+   "horario": "8h",
+   "titulo": "🔥 FINAL DE SEMANA É NA ESTRADA! 🤠🌲🎸",
+   "legenda": "🔥 FINAL DE SEMANA É NA ESTRADA! 🤠🌲🎸\n\nDepois de um fim de semana em que a chuva tentou mandar na programação 😅, estamos prontos para mais dois dias de comida boa, música ao vivo, amigos e aquele clima que só o Bosque tem.\n\n☕ SÁBADO · 12/09\nA partir das 8h — Café da Manhã Western Texano\n🎸 12h30 — Geraldo Barba Blue\nBlues • Folk • Country\n\n☕ DOMINGO · 13/09\nA partir das 8h — Café da Manhã Western Tex",
+   "imagem": "data/img/18074005562436075.jpg",
+   "permalink": "https://www.instagram.com/p/DdBgqhIxgRn/",
+   "publicado": "2026-09-08T10:51:35+0000"
+  },
+  {
+   "id": "17909131023529518",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🔥 A Bandeja Texana tem inspiração americana. Mas a alma — e o sabor — são bem brasileiros.",
+   "legenda": "🔥 A Bandeja Texana tem inspiração americana. Mas a alma — e o sabor — são bem brasileiros. 🇧🇷🤠\n\nUma experiência de sabor, cultura e estrada, com a identidade única do Bosque — e que já ajudou a nos render a indicação ao guiagarfodeouro 2026. 🏆 \n\nAqui, sabor de verdade leva tempo.\n\n🥩 Brisket: cocção lenta, descanso e finalização. Um processo que pode chegar a 38 horas.\n🔥 Costela + Costelinha BBQ: c",
+   "imagem": "data/img/17909131023529518.jpg",
+   "permalink": "https://www.instagram.com/p/DdBe-Jsxit3/",
+   "publicado": "2026-09-08T10:37:41+0000"
+  },
+  {
+   "id": "17907461277515961",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Tem lugar que você visita.",
+   "legenda": "Tem lugar que você visita.\nE tem lugar que você vive. 🤠🌲\n\nO Bosque é feito de tudo aquilo que não cabe em uma foto: o ronco das motos chegando, amigos em volta da mesa, comida no fogo, música boa, encontros que viram histórias e aquela sensação de que a estrada valeu a pena. 🏍️🔥🎸\n\nAqui, ninguém precisa ter pressa.\nÉ chegar, sentar, brindar, comer bem, ouvir um som e deixar o dia acontecer.\n\nE quan",
+   "imagem": "data/img/17907461277515961.jpg",
+   "permalink": "https://www.instagram.com/reel/Dc3OXPbxIKl/",
+   "publicado": "2026-09-04T10:59:19+0000"
+  },
+  {
+   "id": "18009422279765755",
+   "categoria": "musica",
+   "data_evento": "05/09",
+   "horario": "8h",
+   "titulo": "🇧🇷🤠 SETEMBRO COMEÇA NA ESTRADA! 🤘",
+   "legenda": "🇧🇷🤠 SETEMBRO COMEÇA NA ESTRADA! 🤘\n\nO primeiro fim de semana do mês já chega daquele jeito no Bosque: 3 dias de estrada, Café Western Texano, comida no fogo e música ao vivo! 🔥🎸\n\n☕ Todos os dias\nCafé Western Texano a partir das 8h\n\n🎸 SÁBADO • 05/09\nDuo Aragramma — 12h30\nRock Clássico • Country • Folk\n\n🤠 DOMINGO • 06/09\nJohnny Voxx — 13h30\nBest of Classic American Country 🇺🇸\n\n🇧🇷 SEGUNDA • 07/09 • FE",
+   "imagem": "data/img/18009422279765755.jpg",
+   "permalink": "https://www.instagram.com/p/DcuCZWyRvZl/",
+   "publicado": "2026-08-31T21:21:54+0000"
+  }
+ ]
+}

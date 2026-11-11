@@ -61,9 +61,13 @@ MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto",
 def agenda_do_post(cap, img):
     """Cada linha da legenda com dd/mm vira um show: '21/11 · Gu Salvator · 12h30'."""
     itens = []
+    vistos = set()
     for linha in cap.splitlines():
         m = re.search(r"\b(\d{1,2})[/.](\d{1,2})\b", linha)
         if not m:
+            continue
+        # cabeçalhos de fim de semana/feriadão ("14 e 15/11", "20 a 22/11 · Feriadão") não são shows
+        if re.search(r"\b\d{1,2}\s*(e|a|à|até|-|–|/)\s*\d{1,2}[/.]\d{1,2}", linha, re.I) or re.search(r"final de semana|fim de semana", linha, re.I):
             continue
         resto = re.sub(r"\b\d{1,2}[/.]\d{1,2}\b", "", linha)
         hr = horario(resto)
@@ -73,7 +77,14 @@ def agenda_do_post(cap, img):
         nome = re.sub(r"^[\W_]+|[\W_]+$", "", re.sub(r"\s*[·|\-–—:]+\s*", " · ", nome)).strip(" ·")
         nome = re.sub(r"\b(feriado|finados|caf[eé])\b", "", nome, flags=re.I)
         nome = " · ".join(p.strip() for p in re.split(r"\s*·\s*", nome) if p.strip(" ·-–"))
-        item = {"data": f"{int(m.group(1)):02d}/{int(m.group(2)):02d}", "artista": nome[:60], "show": hr}
+        nome = nome.strip(" ·-–")
+        if not re.search(r"[A-Za-zÀ-ú]{3}", nome) or re.match(r"\d", nome):
+            continue
+        data = f"{int(m.group(1)):02d}/{int(m.group(2)):02d}"
+        if (data, nome.lower()) in vistos:
+            continue
+        vistos.add((data, nome.lower()))
+        item = {"data": data, "artista": nome[:60], "show": hr}
         if re.search(r"feriado|finados", linha, re.I):
             item["obs"] = "Feriado"
         c = re.search(r"caf[eé][^\d]{0,20}(\d{1,2}\s?h\d{0,2})", linha, re.I)
@@ -152,7 +163,7 @@ def main():
             f.unlink()
 
     OUT.write_text(json.dumps({
-        "updated": datetime.datetime.utcnow().isoformat() + "Z",
+        "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "agenda": agenda,
         "posts": posts,
     }, ensure_ascii=False, indent=1))

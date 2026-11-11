@@ -124,7 +124,8 @@ def main():
             path = IMG / name
             if not path.exists():
                 try:
-                    urllib.request.urlretrieve(src, path)
+                    with urllib.request.urlopen(src, timeout=20) as r:
+                        path.write_bytes(r.read())
                 except Exception as e:
                     print("imagem falhou:", it["id"], e)
             if path.exists():
@@ -155,7 +156,7 @@ def main():
         "agenda": agenda,
         "posts": posts,
     }, ensure_ascii=False, indent=1))
-    print(f"{len(posts)} posts gravados")
+    print(f"{len(posts)} posts gravados", flush=True)
 
 
 if __name__ == "__main__":

@@ -535,11 +535,11 @@ document.getElementById("tabs").addEventListener("click",e=>{if(e.target.tagName
 function avaliacoes(g){
   if(!g)return;
   if(g.review_url)document.getElementById("rv-btn").href=g.review_url;
-  const list=[...(g.fixas||[]),...(g.reviews||[])].slice(0,6);
+  const list=[...(g.reviews||[]),...(g.fixas||[])].slice(0,6); // API (mais novas) primeiro, depois as fixas
   const box=document.getElementById("revs");
   if(!list.length){document.getElementById("avaliacoes").querySelector(".sh h2").textContent="Sua opinião importa";box.hidden=true;}
   else box.innerHTML=list.map(r=>`<figure class="rev"><span class="st">★★★★★</span><p>${esc(r.texto)}</p>
-    <figcaption class="au">${r.foto?`<img src="${esc(r.foto)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<i>${esc((r.autor||"?")[0])}</i>`}<span>${esc(r.autor||"Visitante")}<small>${esc(r.quando||"")} · Google</small></span></figcaption></figure>`).join("");
+    <figcaption class="au">${r.foto?`<img src="${esc(r.foto)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<i>${esc((r.autor||"?")[0])}</i>`}<span>${esc(r.autor||"Visitante")}<small>${r.quando?esc(r.quando)+" · ":""}Avaliação no Google</small></span></figcaption></figure>`).join("");
   if(g.rating&&g.rating>=(g.nota_minima??4.3)){const e=document.getElementById("rv-score");e.hidden=false;
     e.innerHTML=`Nota ${String(g.rating).replace(".",",")} no Google${g.total?` · ${g.total} avaliações`:""} · <a href="${esc(g.maps)}" target="_blank" rel="noopener">ver todas</a>`;}
 }

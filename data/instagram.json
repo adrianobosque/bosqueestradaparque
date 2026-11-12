@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T20:23:05.126467+00:00",
+ "updated": "2026-11-12T21:19:20.699492+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -83,11 +83,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44092,
-  "posts": 613,
+  "seguidores": 44090,
+  "posts": 614,
   "views": 7410556
  },
  "posts": [
+  {
+   "id": "17913878502589318",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "⭐⭐⭐⭐⭐",
+   "legenda": "⭐⭐⭐⭐⭐ \n\nCurtiu o seu dia na estrada? Conta pra gente no Google!\nSua avaliação ajuda mais gente a descobrir o Bosque, e a gente a melhorar a cada fim de semana. Leva 1 minutinho 🤠✌🏻\n\n👉 Aponte a câmera pro QR code do post\n\n👉 ou acesse bosqueestradaparque.com.br/avaliar \n\nObrigado por pegar a estrada com a gente! 🌲\n\n📍 Km 94 · Rota SP-312 · Itu",
+   "imagem": "data/img/17913878502589318.jpg",
+   "permalink": "https://www.instagram.com/p/Dfp9em2STWV/",
+   "publicado": "2026-11-12T20:55:18+0000"
+  },
   {
    "id": "18115804601596195",
    "categoria": "musica",
@@ -395,17 +406,6 @@
    "imagem": "data/img/18489220579107876.jpg",
    "permalink": "https://www.instagram.com/p/Dd2k9uAx7J1/",
    "publicado": "2026-09-29T01:29:57+0000"
-  },
-  {
-   "id": "18128246830747320",
-   "categoria": "musica",
-   "data_evento": "26/09",
-   "horario": "8h",
-   "titulo": "Fechando setembro do jeito que a gente gosta: estrada, música boa, comida de verdade e gra",
-   "legenda": "Fechando setembro do jeito que a gente gosta: estrada, música boa, comida de verdade e grandes encontros. 🤠🔥🏍️\n\nNeste fim de semana, o Bosque preparou uma programação especial:\n\n☕ SÁBADO • 26/09\nA partir das 8h — Café da Manhã Western Texano\n🎸 12h30 — Laís Gonzalez ao vivo\nCountry • Folk • Pop Rock\n\n🏁 DOMINGO • 27/09 — ESPECIAL ACELERADAS\nA partir das 8h — Café da Manhã Western Texano\n🏍️ 10h — Rec",
-   "imagem": "data/img/18128246830747320.jpg",
-   "permalink": "https://www.instagram.com/p/DdkDAELSdng/",
-   "publicado": "2026-09-21T20:45:34+0000"
   }
  ]
 }

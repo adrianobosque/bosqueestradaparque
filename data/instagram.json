@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T18:19:49.010763+00:00",
+ "updated": "2026-11-12T19:27:13.965292+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -81,6 +81,10 @@
     "foto": "data/img/17991768225090588_2.jpg"
    }
   ]
+ },
+ "perfil": {
+  "seguidores": 44092,
+  "posts": 613
  },
  "posts": [
   {

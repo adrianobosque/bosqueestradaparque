@@ -285,5 +285,33 @@ def main():
     print(f"{len(posts)} posts gravados", flush=True)
 
 
+YT_CHANNEL = "UCt4hiMCiFigPsZV6q_hJ8zg"
+
+
+def sync_youtube():
+    """Lista os vídeos do canal (feed RSS, sem chave) e guarda só os que podem tocar fora do YouTube."""
+    import xml.etree.ElementTree as ET
+    out = ROOT / "data" / "youtube.json"
+    with urllib.request.urlopen(f"https://www.youtube.com/feeds/videos.xml?channel_id={YT_CHANNEL}", timeout=30) as r:
+        root = ET.fromstring(r.read())
+    ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
+    ok, bloq = [], 0
+    for e in root.findall("a:entry", ns):
+        vid = e.find("yt:videoId", ns).text
+        tit = e.find("a:title", ns).text
+        try:  # oEmbed responde 401/403/404 quando o vídeo não pode ser incorporado
+            urllib.request.urlopen("https://www.youtube.com/oembed?format=json&url=" +
+                                   urllib.parse.quote(f"https://www.youtube.com/watch?v={vid}"), timeout=15).read()
+            ok.append({"id": vid, "titulo": tit})
+        except Exception:
+            bloq += 1
+    out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "videos": ok}, ensure_ascii=False, indent=1))
+    print(f"youtube: {len(ok)} vídeos liberados, {bloq} bloqueados para incorporar", flush=True)
+
+
 if __name__ == "__main__":
     main()
+    try:
+        sync_youtube()
+    except Exception as e:
+        print("youtube falhou (segue):", e)

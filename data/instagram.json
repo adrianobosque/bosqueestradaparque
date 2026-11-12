@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T01:29:47.549429+00:00",
+ "updated": "2026-11-12T04:11:18.115400+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -62,6 +62,50 @@
   ]
  },
  "posts": [
+  {
+   "id": "18115804601596195",
+   "categoria": "musica",
+   "data_evento": "15/11",
+   "horario": "10h",
+   "titulo": "📅 14–15/11 · Fim de semana sempre com música ao vivo",
+   "legenda": "📅 14–15/11 · Fim de semana sempre com música ao vivo\n\nEstrada, café western e show no Bosque 🎸\n\n🗓 Sáb 14 · Ani Belle — café 10h, almoço 12h, show 12h30\n\n🗓 Dom 15 (feriado) · Rafa LeBeats — café 8h, almoço 12h, show 13h\n\n📍 Km 94 da Rota SP-312, Itu · Sem reserva · Pet friendly · Sem couvert\nManda pra quem vai pegar a estrada com você 🏍️\n\nmúsica ao vivo Itu · café da manhã Itu · feriado no interior ",
+   "imagem": "data/img/18115804601596195.jpg",
+   "permalink": "https://www.instagram.com/reel/Dfn-vw7xA4q/",
+   "publicado": "2026-11-12T02:27:55+0000"
+  },
+  {
+   "id": "18150123850562845",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "No ar 🤠✌🏻",
+   "legenda": "No ar 🤠✌🏻",
+   "imagem": "data/img/18150123850562845.jpg",
+   "permalink": "https://www.instagram.com/reel/Dfn-MT3xQJC/",
+   "publicado": "2026-11-12T02:22:25+0000"
+  },
+  {
+   "id": "17991768225090588",
+   "categoria": "musica",
+   "data_evento": "15/11",
+   "horario": "10h",
+   "titulo": "📅 14–15/11 · Fim de semana com música ao vivo",
+   "legenda": "📅 14–15/11 · Fim de semana com música ao vivo\n\nEstrada, café western e show no Bosque 🎸\n\n🗓 Sáb 14 · Ani Belle — café 10h, almoço 12h, show 12h30\n\n🗓 Dom 15 (feriado) · Rafa LeBeats — café 8h, almoço 12h, show 13h\n\n📍 Km 94 da Rota SP-312, Itu · Sem reserva · Pet friendly · Sem couvert\n\nManda pra quem vai pegar a estrada com você 🏍️\n\nO destino de quem vive a estrada 🤠✌🏻\n\nmúsica ao vivo Itu · café da ",
+   "imagem": "data/img/17991768225090588.jpg",
+   "permalink": "https://www.instagram.com/p/Dfn98JYEbU9/",
+   "publicado": "2026-11-12T02:19:32+0000"
+  },
+  {
+   "id": "17955518367316878",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🌲 NOVIDADE NA ESTRADA: nosso site novo está no ar! 🤠✌🏻",
+   "legenda": "🌲 NOVIDADE NA ESTRADA: nosso site novo está no ar! 🤠✌🏻\n\nAgora ficou muito mais fácil planejar seu passeio até o Bosque:\n\n🎸 Agenda de shows: quem toca em cada fim de semana, sempre com os clássicos de Rock, Country, Folk e Blues\n\n🌤️ Clima ao vivo no Km 94: confira o tempo antes de pegar a estrada\n📍 Rota direto no Google Maps\n📋 Cardápio, horários e as respostas pras dúvidas mais comuns\n🐾 Pet friendl",
+   "imagem": "data/img/17955518367316878.jpg",
+   "permalink": "https://www.instagram.com/p/Dfn4-BfxUcT/",
+   "publicado": "2026-11-12T01:38:16+0000"
+  },
   {
    "id": "18117040256605059",
    "categoria": "musica",
@@ -336,50 +380,6 @@
    "imagem": "data/img/18128246830747320.jpg",
    "permalink": "https://www.instagram.com/p/DdkDAELSdng/",
    "publicado": "2026-09-21T20:45:34+0000"
-  },
-  {
-   "id": "18074005562436075",
-   "categoria": "musica",
-   "data_evento": "12/09",
-   "horario": "8h",
-   "titulo": "🔥 FINAL DE SEMANA É NA ESTRADA! 🤠🌲🎸",
-   "legenda": "🔥 FINAL DE SEMANA É NA ESTRADA! 🤠🌲🎸\n\nDepois de um fim de semana em que a chuva tentou mandar na programação 😅, estamos prontos para mais dois dias de comida boa, música ao vivo, amigos e aquele clima que só o Bosque tem.\n\n☕ SÁBADO · 12/09\nA partir das 8h — Café da Manhã Western Texano\n🎸 12h30 — Geraldo Barba Blue\nBlues • Folk • Country\n\n☕ DOMINGO · 13/09\nA partir das 8h — Café da Manhã Western Tex",
-   "imagem": "data/img/18074005562436075.jpg",
-   "permalink": "https://www.instagram.com/p/DdBgqhIxgRn/",
-   "publicado": "2026-09-08T10:51:35+0000"
-  },
-  {
-   "id": "17909131023529518",
-   "categoria": "novidades",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "🔥 A Bandeja Texana tem inspiração americana. Mas a alma — e o sabor — são bem brasileiros.",
-   "legenda": "🔥 A Bandeja Texana tem inspiração americana. Mas a alma — e o sabor — são bem brasileiros. 🇧🇷🤠\n\nUma experiência de sabor, cultura e estrada, com a identidade única do Bosque — e que já ajudou a nos render a indicação ao guiagarfodeouro 2026. 🏆 \n\nAqui, sabor de verdade leva tempo.\n\n🥩 Brisket: cocção lenta, descanso e finalização. Um processo que pode chegar a 38 horas.\n🔥 Costela + Costelinha BBQ: c",
-   "imagem": "data/img/17909131023529518.jpg",
-   "permalink": "https://www.instagram.com/p/DdBe-Jsxit3/",
-   "publicado": "2026-09-08T10:37:41+0000"
-  },
-  {
-   "id": "17907461277515961",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "Tem lugar que você visita.",
-   "legenda": "Tem lugar que você visita.\nE tem lugar que você vive. 🤠🌲\n\nO Bosque é feito de tudo aquilo que não cabe em uma foto: o ronco das motos chegando, amigos em volta da mesa, comida no fogo, música boa, encontros que viram histórias e aquela sensação de que a estrada valeu a pena. 🏍️🔥🎸\n\nAqui, ninguém precisa ter pressa.\nÉ chegar, sentar, brindar, comer bem, ouvir um som e deixar o dia acontecer.\n\nE quan",
-   "imagem": "data/img/17907461277515961.jpg",
-   "permalink": "https://www.instagram.com/reel/Dc3OXPbxIKl/",
-   "publicado": "2026-09-04T10:59:19+0000"
-  },
-  {
-   "id": "18009422279765755",
-   "categoria": "musica",
-   "data_evento": "05/09",
-   "horario": "8h",
-   "titulo": "🇧🇷🤠 SETEMBRO COMEÇA NA ESTRADA! 🤘",
-   "legenda": "🇧🇷🤠 SETEMBRO COMEÇA NA ESTRADA! 🤘\n\nO primeiro fim de semana do mês já chega daquele jeito no Bosque: 3 dias de estrada, Café Western Texano, comida no fogo e música ao vivo! 🔥🎸\n\n☕ Todos os dias\nCafé Western Texano a partir das 8h\n\n🎸 SÁBADO • 05/09\nDuo Aragramma — 12h30\nRock Clássico • Country • Folk\n\n🤠 DOMINGO • 06/09\nJohnny Voxx — 13h30\nBest of Classic American Country 🇺🇸\n\n🇧🇷 SEGUNDA • 07/09 • FE",
-   "imagem": "data/img/18009422279765755.jpg",
-   "permalink": "https://www.instagram.com/p/DcuCZWyRvZl/",
-   "publicado": "2026-08-31T21:21:54+0000"
   }
  ]
 }

@@ -58,36 +58,66 @@ def titulo(txt):
 MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 
 
-def shows_da_legenda(cap):
-    """Cada linha da legenda com dd/mm vira um show: '21/11 · Gu Salvator · 12h30'."""
-    itens = []
-    vistos = set()
+DIA_SEM = r"(seg|ter|qua|qui|sex|s[aá]b|dom)\w*\.?"
+HORA = r"\d{1,2}\s?h\s?\d{0,2}"
+
+
+def shows_da_legenda(cap, ref=None):
+    """Lê os shows da legenda. Aceita:
+       '21/11 · Gu Salvator · 12h30'
+       'Sáb 14 · Ani Belle — café 10h, almoço 12h, show 12h30'   (mês vem do cabeçalho ou da data do post)
+    """
+    ref = ref or datetime.date.today()
+    mes_cab = None
+    m_cab = re.search(r"\d{1,2}\s*(?:e|a|à|até|-|–|—)\s*\d{1,2}[/.](\d{1,2})", cap)
+    if m_cab:
+        mes_cab = int(m_cab.group(1))
+    itens, vistos = [], set()
     for linha in cap.splitlines():
+        if re.search(r"\b\d{1,2}\s*(e|a|à|até|-|–|—|/)\s*\d{1,2}[/.]\d{1,2}", linha, re.I) or re.search(r"final de semana|fim de semana", linha, re.I):
+            continue  # cabeçalho ("14–15/11 · Fim de semana", "20 a 22/11 · Feriadão")
         m = re.search(r"\b(\d{1,2})[/.](\d{1,2})\b", linha)
-        if not m:
+        if m:
+            dia, mes = int(m.group(1)), int(m.group(2))
+            linha_sem_data = linha[:m.start()] + " " + linha[m.end():]
+        else:
+            m2 = re.search(DIA_SEM + r"\s+(\d{1,2})\b(?!\s*[/.:h]\d?)", linha, re.I)
+            if not m2:
+                continue
+            dia = int(m2.group(2))
+            if mes_cab:
+                mes = mes_cab
+            else:  # próxima ocorrência desse dia a partir da data do post
+                mes = ref.month if dia >= ref.day else ref.month % 12 + 1
+            linha_sem_data = linha[:m2.start()] + " " + linha[m2.end():]
+        if not (1 <= dia <= 31 and 1 <= mes <= 12):
             continue
-        # cabeçalhos de fim de semana/feriadão ("14 e 15/11", "20 a 22/11 · Feriadão") não são shows
-        if re.search(r"\b\d{1,2}\s*(e|a|à|até|-|–|/)\s*\d{1,2}[/.]\d{1,2}", linha, re.I) or re.search(r"final de semana|fim de semana", linha, re.I):
+        # horário do show: 'show 12h30' > horário que não seja de café/almoço
+        hs = re.search(r"show\D{0,8}(" + HORA + ")", linha_sem_data, re.I)
+        sem_refeicao = re.sub(r"(caf[eé]|almo[cç]o)\D{0,15}" + HORA, " ", linha_sem_data, flags=re.I)
+        hr = horario(hs.group(1)) if hs else horario(sem_refeicao)
+        # artista: primeiro trecho com letras que não seja palavra de serviço
+        txt = re.sub(DIA_SEM, " ", sem_refeicao, flags=re.I)
+        txt = re.sub(r"\(?\b(feriado|feriadão|finados)\b\)?", " ", txt, flags=re.I)
+        txt = re.sub(r"(show|[àa]s|a partir d[ae]s?)\s*" + HORA, " ", txt, flags=re.I)
+        txt = re.sub(HORA, " ", txt, flags=re.I)
+        nome = ""
+        for parte in re.split(r"\s[—–-]\s|[·|,—–:]", txt):
+            parte = re.sub(r"[^\wÀ-ú&'. ]", " ", parte).strip(" .")
+            parte = re.sub(r"\s+", " ", parte)
+            if re.search(r"[A-Za-zÀ-ú]{3}", parte) and not re.fullmatch(r"(?i)(show|caf[eé]|almo[cç]o|ao vivo|m[uú]sica ao vivo)", parte):
+                nome = parte
+                break
+        if not nome or re.match(r"\d", nome):
             continue
-        resto = re.sub(r"\b\d{1,2}[/.]\d{1,2}\b", "", linha)
-        hr = horario(resto)
-        nome = re.sub(r"\b\d{1,2}\s?h\s?\d{0,2}\b", "", resto, flags=re.I)
-        nome = re.sub(r"\b(seg|ter|qua|qui|sex|s[aá]b|dom)\w*\b", "", nome, flags=re.I)
-        nome = re.sub(r"(show|[àa]s|a partir d[ae]s?)\b", "", nome, flags=re.I)
-        nome = re.sub(r"^[\W_]+|[\W_]+$", "", re.sub(r"\s*[·|\-–—:]+\s*", " · ", nome)).strip(" ·")
-        nome = re.sub(r"\b(feriado|finados|caf[eé])\b", "", nome, flags=re.I)
-        nome = " · ".join(p.strip() for p in re.split(r"\s*·\s*", nome) if p.strip(" ·-–"))
-        nome = nome.strip(" ·-–")
-        if not re.search(r"[A-Za-zÀ-ú]{3}", nome) or re.match(r"\d", nome):
-            continue
-        data = f"{int(m.group(1)):02d}/{int(m.group(2)):02d}"
+        data = f"{dia:02d}/{mes:02d}"
         if (data, nome.lower()) in vistos:
             continue
         vistos.add((data, nome.lower()))
         item = {"data": data, "artista": nome[:60], "show": hr}
         if re.search(r"feriado|finados", linha, re.I):
             item["obs"] = "Feriado"
-        c = re.search(r"caf[eé][^\d]{0,20}(\d{1,2}\s?h\d{0,2})", linha, re.I)
+        c = re.search(r"caf[eé]\D{0,20}(" + HORA + ")", linha, re.I)
         if c:
             item["cafe"] = c.group(1).replace(" ", "")
         itens.append(item)
@@ -99,9 +129,9 @@ def mes_da_legenda(cap):
     return next((mm for mm in MESES if f"agenda de {mm}" in low or f"programação de {mm}" in low), None)
 
 
-def agenda_do_post(cap, img, carrossel=False):
+def agenda_do_post(cap, img, carrossel=False, ref=None):
     """Agenda do MÊS: legenda com 'Agenda de <mês>' ou muitas datas (e não é o carrossel semanal)."""
-    itens = shows_da_legenda(cap)
+    itens = shows_da_legenda(cap, ref)
     mes = mes_da_legenda(cap)
     if (mes and itens) or (len(itens) >= 5 and not carrossel):
         if not mes and itens:
@@ -110,12 +140,19 @@ def agenda_do_post(cap, img, carrossel=False):
     return None
 
 
+def data_post(it):
+    try:
+        return datetime.datetime.strptime(it.get("timestamp", "")[:10], "%Y-%m-%d").date()
+    except Exception:
+        return None
+
+
 def semana_do_post(cap, it, baixar):
     """Carrossel SEMANAL: uma foto por artista, na mesma ordem das linhas da legenda.
     Se houver mais fotos que shows, as primeiras são capa e são ignoradas."""
     if it.get("media_type") != "CAROUSEL_ALBUM" or mes_da_legenda(cap):
         return None
-    itens = shows_da_legenda(cap)
+    itens = shows_da_legenda(cap, data_post(it))
     if not (1 <= len(itens) <= 6):
         return None
     filhos = [c for c in (it.get("children") or {}).get("data", [])]
@@ -123,7 +160,8 @@ def semana_do_post(cap, it, baixar):
     for n, c in enumerate(filhos):
         src = c.get("thumbnail_url") if c.get("media_type") == "VIDEO" else c.get("media_url")
         fotos.append(baixar(src, f"{it['id']}_{n}.jpg") if src else None)
-    off = max(0, len(fotos) - len(itens))
+    # 1 foto por artista: se há mais fotos que shows, a 1ª é capa e os artistas vêm em seguida
+    off = 1 if len(fotos) > len(itens) else 0
     for k, item in enumerate(itens):
         if off + k < len(fotos) and fotos[off + k]:
             item["foto"] = fotos[off + k]
@@ -191,7 +229,7 @@ def main():
             if sm:
                 semana = sm
                 print("semana:", [(i["data"], i["artista"], bool(i.get("foto"))) for i in sm["itens"]])
-        ag = agenda_do_post(cap, img, carrossel)
+        ag = agenda_do_post(cap, img, carrossel, data_post(it))
         if ag and agenda is None:   # o mais recente vence
             agenda = ag
             continue

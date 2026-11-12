@@ -192,6 +192,14 @@ def main():
     if items is None:
         sys.exit("Não consegui ler o Instagram com esse token")
 
+    perfil = None
+    try:
+        pf = get(f"https://graph.facebook.com/v21.0/{IG_USER_ID}?fields=followers_count,media_count&access_token={urllib.parse.quote(TOKEN)}")
+        perfil = {"seguidores": pf.get("followers_count"), "posts": pf.get("media_count")}
+        print("perfil:", perfil)
+    except Exception as e:
+        print("perfil falhou (segue):", e)
+
     IMG.mkdir(parents=True, exist_ok=True)
     keep, posts, agenda, semana = set(), [], None, None
 
@@ -254,6 +262,7 @@ def main():
         "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "agenda": agenda,
         "semana": semana,
+        "perfil": perfil,
         "posts": posts,
     }, ensure_ascii=False, indent=1))
     print(f"{len(posts)} posts gravados", flush=True)

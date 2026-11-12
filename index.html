@@ -486,7 +486,7 @@ function clima(){
     const iChuva=prox.slice(0,4).find(i=>H.precipitation_probability[i]>=50);
     const chuvaLogo=iChuva!==undefined, chuvaAgora=mm>=0.2;
     const quandoChuva=chuvaLogo?`Chuva ${H.precipitation_probability[iChuva]}% às ${+H.time[iChuva].slice(11,13)}h`:"";
-    const sub=chuvaAgora?"Chovendo agora":chuvaLogo?quandoChuva:desc;
+    const sub=!chuvaAgora&&chuvaLogo?quandoChuva:desc; // mesmo termo do selo do topo
     const chip=document.getElementById("wx-chip");chip.textContent=`${lua} Agora no Bosque: ${t}° · ${desc}${!chuvaAgora&&chuvaLogo?" · "+quandoChuva.toLowerCase():""}`;chip.hidden=false;
     const msg=document.getElementById("wx-msg");
     if(chuvaAgora){msg.textContent="Previsão indica chuva agora na região do Bosque. A música ao vivo pode ser cancelada.";msg.className="alerta";}

@@ -163,7 +163,10 @@ section{padding:84px 0}
 .f-tx b{display:block;font:900 30px/1 Overpass;color:var(--areia);font-variant-numeric:tabular-nums}
 .f-tx small{font-size:13px;opacity:.85}
 .f-btn{margin-left:auto;background:var(--ouro);color:#1D2412;font:900 14px Overpass;text-transform:uppercase;padding:9px 16px;border-radius:8px}
-.yt{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000 url(img/show1.jpg) center/cover;border:1px solid var(--linha);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.yt{position:relative;aspect-ratio:9/16;width:min(100%,400px);max-height:82vh;margin:0 auto;border-radius:22px;overflow:hidden;background:#000 url(img/show1.jpg) center/cover;border:1px solid var(--linha);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.yt-grid{display:grid;grid-template-columns:1fr 400px;gap:50px;align-items:center}
+@media(max-width:820px){.yt-grid{grid-template-columns:1fr;gap:24px}.yt{width:min(100%,360px)}}
+.yt-list{list-style:none;display:grid;gap:10px;margin-bottom:6px;font:700 17px Overpass}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt-play{position:absolute;inset:0;width:100%;border:0;cursor:pointer;background:rgba(29,36,18,.45);color:var(--creme);font:900 18px Overpass;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .yt-play span{width:86px;height:86px;border-radius:50%;background:var(--ouro);color:#1D2412;display:grid;place-items:center;font-size:34px;padding-left:6px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
@@ -409,13 +412,20 @@ footer a{margin:0 8px}
 
 
 <!-- BOSQUE AO VIVO — playlist automática do canal do YouTube (sem API) -->
-<section id="aovivo"><div class="wrap">
-  <div class="sh"><span class="mono">🎸 Trilha da estrada</span><h2>Bosque ao vivo</h2><p>Os shows que já rolaram no palco do D60. Dá o play e curte o site com a trilha do Bosque.</p></div>
-  <div class="yt" id="yt">
-    <button class="yt-play" id="yt-play" aria-label="Tocar vídeos do Bosque"><span>▶</span>Dar o play na trilha do Bosque</button>
+<section id="aovivo"><div class="wrap yt-grid">
+  <div class="yt-side">
+    <div class="sh" style="margin-bottom:18px"><span class="mono">🎸 Trilha da estrada</span><h2>Bosque ao vivo</h2><p>Os shows que já rolaram no palco do D60. Dá o play e curte o site com a trilha do Bosque.</p></div>
+    <ul class="yt-list">
+      <li>🎶 Rock, Country, Folk e Blues ao vivo</li>
+      <li>🚫 Sem couvert artístico</li>
+      <li>📅 Shows todo fim de semana e feriado</li>
+    </ul>
+    <p class="yt-tip" id="yt-tip" hidden>🔈 Tocando sem som. Toque no vídeo e ative o áudio para ouvir.</p>
+    <div class="cta"><a class="btn" href="#fds">Ver a agenda</a><a class="btn alt" href="https://www.youtube.com/@BosqueEstradaParque?sub_confirmation=1" target="_blank" rel="noopener" data-ev="youtube_inscrever">Inscrever-se no YouTube</a></div>
   </div>
-  <p class="yt-tip" id="yt-tip" hidden>🔈 Tocando sem som. Toque no vídeo e ative o áudio para ouvir.</p>
-  <div class="cta"><a class="btn alt" href="https://www.youtube.com/@BosqueEstradaParque?sub_confirmation=1" target="_blank" rel="noopener" data-ev="youtube_inscrever">Inscrever-se no YouTube</a></div>
+  <div class="yt" id="yt">
+    <button class="yt-play" id="yt-play" aria-label="Tocar vídeos do Bosque"><span>▶</span>Dar o play</button>
+  </div>
 </div></section>
 
 <!-- AVALIAÇÕES GOOGLE (data/google.json) -->

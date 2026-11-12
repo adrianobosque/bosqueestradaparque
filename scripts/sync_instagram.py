@@ -58,7 +58,7 @@ def titulo(txt):
 MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 
 
-def agenda_do_post(cap, img):
+def shows_da_legenda(cap):
     """Cada linha da legenda com dd/mm vira um show: '21/11 · Gu Salvator · 12h30'."""
     itens = []
     vistos = set()
@@ -91,19 +91,49 @@ def agenda_do_post(cap, img):
         if c:
             item["cafe"] = c.group(1).replace(" ", "")
         itens.append(item)
+    return itens
+
+
+def mes_da_legenda(cap):
     low = cap.lower()
-    mes = next((mm for mm in MESES if f"agenda de {mm}" in low or f"programação de {mm}" in low), None)
-    if len(itens) >= 3 or (mes and itens):
+    return next((mm for mm in MESES if f"agenda de {mm}" in low or f"programação de {mm}" in low), None)
+
+
+def agenda_do_post(cap, img, carrossel=False):
+    """Agenda do MÊS: legenda com 'Agenda de <mês>' ou muitas datas (e não é o carrossel semanal)."""
+    itens = shows_da_legenda(cap)
+    mes = mes_da_legenda(cap)
+    if (mes and itens) or (len(itens) >= 5 and not carrossel):
         if not mes and itens:
             mes = MESES[int(itens[0]["data"][3:]) - 1]
         return {"mes": mes.capitalize(), "cartaz": img, "itens": itens}
     return None
 
 
+def semana_do_post(cap, it, baixar):
+    """Carrossel SEMANAL: uma foto por artista, na mesma ordem das linhas da legenda.
+    Se houver mais fotos que shows, as primeiras são capa e são ignoradas."""
+    if it.get("media_type") != "CAROUSEL_ALBUM" or mes_da_legenda(cap):
+        return None
+    itens = shows_da_legenda(cap)
+    if not (1 <= len(itens) <= 6):
+        return None
+    filhos = [c for c in (it.get("children") or {}).get("data", [])]
+    fotos = []
+    for n, c in enumerate(filhos):
+        src = c.get("thumbnail_url") if c.get("media_type") == "VIDEO" else c.get("media_url")
+        fotos.append(baixar(src, f"{it['id']}_{n}.jpg") if src else None)
+    off = max(0, len(fotos) - len(itens))
+    for k, item in enumerate(itens):
+        if off + k < len(fotos) and fotos[off + k]:
+            item["foto"] = fotos[off + k]
+    return {"post": it.get("permalink"), "publicado": it.get("timestamp"), "itens": itens}
+
+
 def main():
     if not TOKEN:
         sys.exit("IG_TOKEN ausente")
-    fields = "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp"
+    fields = "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,children{media_type,media_url,thumbnail_url}"
     q = f"fields={fields}&limit={LIMIT}&access_token={urllib.parse.quote(TOKEN)}"
     # 1) token do "login unificado"/usuário do sistema (Facebook Graph) — não expira
     # 2) token do "login do Instagram" (graph.instagram.com) — renovado a cada execução
@@ -125,7 +155,21 @@ def main():
         sys.exit("Não consegui ler o Instagram com esse token")
 
     IMG.mkdir(parents=True, exist_ok=True)
-    keep, posts, agenda = set(), [], None
+    keep, posts, agenda, semana = set(), [], None, None
+
+    def baixar(src, name):
+        path = IMG / name
+        if not path.exists():
+            try:
+                with urllib.request.urlopen(src, timeout=20) as r:
+                    path.write_bytes(r.read())
+            except Exception as e:
+                print("imagem falhou:", name, e)
+        if path.exists():
+            keep.add(name)
+            return f"data/img/{name}"
+        return None
+
     for it in items:
         cap = it.get("caption") or ""
         src = it.get("thumbnail_url") if it.get("media_type") == "VIDEO" else it.get("media_url")
@@ -141,7 +185,13 @@ def main():
                     print("imagem falhou:", it["id"], e)
             if path.exists():
                 img, _ = f"data/img/{name}", keep.add(name)
-        ag = agenda_do_post(cap, img)
+        carrossel = it.get("media_type") == "CAROUSEL_ALBUM"
+        if semana is None:          # o carrossel semanal mais recente vence
+            sm = semana_do_post(cap, it, baixar)
+            if sm:
+                semana = sm
+                print("semana:", [(i["data"], i["artista"], bool(i.get("foto"))) for i in sm["itens"]])
+        ag = agenda_do_post(cap, img, carrossel)
         if ag and agenda is None:   # o mais recente vence
             agenda = ag
             continue
@@ -165,6 +215,7 @@ def main():
     OUT.write_text(json.dumps({
         "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "agenda": agenda,
+        "semana": semana,
         "posts": posts,
     }, ensure_ascii=False, indent=1))
     print(f"{len(posts)} posts gravados", flush=True)

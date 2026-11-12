@@ -1,15 +1,9 @@
 {
- "updated": "2026-11-11T22:17:10.862743Z",
+ "updated": "2026-11-12T01:29:47.549429+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
   "itens": [
-   {
-    "data": "02/11",
-    "artista": "01 e · de",
-    "show": null,
-    "obs": "Feriado"
-   },
    {
     "data": "01/11",
     "artista": "Bruno Vallente",
@@ -19,11 +13,6 @@
     "data": "02/11",
     "artista": "Duo Aragramma",
     "show": "12h30"
-   },
-   {
-    "data": "08/11",
-    "artista": "07 e",
-    "show": null
    },
    {
     "data": "07/11",
@@ -36,11 +25,6 @@
     "show": "13h"
    },
    {
-    "data": "15/11",
-    "artista": "14 e",
-    "show": null
-   },
-   {
     "data": "14/11",
     "artista": "Ani Belle",
     "show": "12h30"
@@ -49,11 +33,6 @@
     "data": "15/11",
     "artista": "Rafa LeBeats",
     "show": "13h"
-   },
-   {
-    "data": "22/11",
-    "artista": "20 a · Feriadão da Consciência Negra",
-    "show": null
    },
    {
     "data": "20/11",
@@ -69,11 +48,6 @@
     "data": "22/11",
     "artista": "Johnny Voxx",
     "show": "13h"
-   },
-   {
-    "data": "29/11",
-    "artista": "28 e",
-    "show": null
    },
    {
     "data": "28/11",

@@ -199,6 +199,23 @@ def main():
         print("perfil:", perfil)
     except Exception as e:
         print("perfil falhou (segue):", e)
+    # visualizações totais = 6.910.412 (mídia kit, até 31/08/2026) + soma diária desde 01/09 (precisa de permissão de insights)
+    try:
+        base, ini = 6910412, datetime.date(2026, 9, 1)
+        hoje, total, d = datetime.date.today(), 0, ini
+        while d < hoje:
+            fim = min(d + datetime.timedelta(days=30), hoje)
+            r = get(f"https://graph.facebook.com/v21.0/{IG_USER_ID}/insights?metric=views&period=day&metric_type=total_value"
+                    f"&since={int(datetime.datetime(d.year, d.month, d.day).timestamp())}&until={int(datetime.datetime(fim.year, fim.month, fim.day).timestamp())}"
+                    f"&access_token={urllib.parse.quote(TOKEN)}")
+            for m in r.get("data", []):
+                total += (m.get("total_value") or {}).get("value", 0) or 0
+            d = fim
+        if perfil is not None:
+            perfil["views"] = base + total
+        print("views:", base + total)
+    except Exception as e:
+        print("views falhou (sem permissão de insights?):", e)
 
     IMG.mkdir(parents=True, exist_ok=True)
     keep, posts, agenda, semana = set(), [], None, None

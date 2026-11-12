@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T17:27:33.249888+00:00",
+ "updated": "2026-11-12T17:34:13.635920+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -61,7 +61,27 @@
    }
   ]
  },
- "semana": null,
+ "semana": {
+  "post": "https://www.instagram.com/p/Dfn98JYEbU9/",
+  "publicado": "2026-11-12T02:19:32+0000",
+  "itens": [
+   {
+    "data": "14/11",
+    "artista": "Ani Belle",
+    "show": "12h30",
+    "cafe": "10h",
+    "foto": "data/img/17991768225090588_1.jpg"
+   },
+   {
+    "data": "15/11",
+    "artista": "Rafa LeBeats",
+    "show": "13h",
+    "obs": "Feriado",
+    "cafe": "8h",
+    "foto": "data/img/17991768225090588_2.jpg"
+   }
+  ]
+ },
  "posts": [
   {
    "id": "18115804601596195",

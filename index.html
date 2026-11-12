@@ -167,7 +167,7 @@ section{padding:84px 0}
 .yt-grid{display:grid;grid-template-columns:1fr 400px;gap:50px;align-items:center}
 @media(max-width:820px){.yt-grid{grid-template-columns:1fr;gap:24px}.yt{width:min(100%,360px)}}
 .yt-list{list-style:none;display:grid;gap:10px;margin-bottom:6px;font:700 17px Overpass}
-.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt iframe,#yt-p{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt-play{position:absolute;inset:0;width:100%;border:0;cursor:pointer;background:rgba(29,36,18,.45);color:var(--creme);font:900 18px Overpass;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .yt-play span{width:86px;height:86px;border-radius:50%;background:var(--ouro);color:#1D2412;display:grid;place-items:center;font-size:34px;padding-left:6px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .yt-tip{margin-top:10px;font-size:14px;opacity:.8}
@@ -398,7 +398,7 @@ footer a{margin:0 8px}
     <div class="stats">
       <div><b>4,8/5</b><span>no Restaurant Guru</span></div>
       <div><b>18 mil m²</b><span>de natureza à beira do Tietê</span></div>
-      <div><b>6,9 mi</b><span>visualizações no Instagram</span></div>
+      <div><b id="views">6,9 mi</b><span>visualizações no Instagram</span></div>
       <div><b>80%</b><span>dos visitantes vêm de fora de Itu</span></div>
     </div>
     <a class="follow" href="https://www.instagram.com/bosqueestradaparque/?utm_source=site&utm_medium=contador" target="_blank" rel="noopener" data-ev="seguir_instagram">
@@ -629,16 +629,29 @@ function avaliacoes(g){
     e.innerHTML=`Nota ${String(g.rating).replace(".",",")} no Google${g.total?` · ${g.total} avaliações`:""} · <a href="${esc(g.maps)}" target="_blank" rel="noopener">ver todas</a>`;}
 }
 fetch("data/google.json?"+Date.now()).then(r=>r.json()).then(avaliacoes).catch(()=>{});
-// YouTube: playlist de uploads do canal (UC→UU), atualiza sozinha
+// YouTube: playlist de uploads do canal (UC→UU), atualiza sozinha; pula vídeos que não permitem incorporação
 (function(){
   const box=document.getElementById("yt");if(!box)return;
-  const base="https://www.youtube-nocookie.com/embed/videoseries?list=UUt4hiMCiFigPsZV6q_hJ8zg&loop=1&playsinline=1&rel=0&modestbranding=1";
-  function carrega(som){if(box.querySelector("iframe"))return;
-    box.innerHTML=`<iframe src="${base}&autoplay=1&mute=${som?0:1}" title="Bosque ao vivo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  const LIST="UUt4hiMCiFigPsZV6q_hJ8zg";let player=null,pend=null,erros=0;
+  function cria(som){
+    if(player||box.dataset.on)return;box.dataset.on=1;
+    box.innerHTML='<div id="yt-p"></div>';
     if(!som)document.getElementById("yt-tip").hidden=false;
-    if(window.fbq)fbq("trackCustom","youtube_play");}
-  document.getElementById("yt-play").addEventListener("click",()=>carrega(true));
-  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();carrega(false);}},{threshold:.6});
+    pend=som;
+    if(window.YT&&YT.Player)monta();else{window.onYouTubeIframeAPIReady=monta;const t=document.createElement("script");t.src="https://www.youtube.com/iframe_api";document.head.appendChild(t);}
+    if(window.fbq)fbq("trackCustom","youtube_play");
+  }
+  function monta(){
+    player=new YT.Player("yt-p",{width:"100%",height:"100%",
+      playerVars:{listType:"playlist",list:LIST,autoplay:1,mute:pend?0:1,loop:1,playsinline:1,rel:0,modestbranding:1},
+      events:{
+        onReady:e=>{if(!pend)e.target.mute();e.target.playVideo();},
+        onStateChange:e=>{if(e.data===YT.PlayerState.PLAYING)erros=0;},
+        onError:e=>{erros++;if(erros<15)setTimeout(()=>e.target.nextVideo(),300);}
+      }});
+  }
+  document.getElementById("yt-play").addEventListener("click",()=>cria(true));
+  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();cria(false);}},{threshold:.6});
   io.observe(box);
 })();
 function contador(n){
@@ -653,7 +666,7 @@ Promise.all([
   fetch("data/agenda.json?"+Date.now()).then(r=>r.json()).catch(()=>null),
   fetch("data/instagram.json?"+Date.now()).then(r=>r.json()).catch(()=>({}))
 ]).then(([man,ig])=>{
-  posts=ig.posts||[];contador((ig.perfil&&ig.perfil.seguidores)||42586);
+  posts=ig.posts||[];if(ig.perfil&&ig.perfil.views){const v=ig.perfil.views;document.getElementById("views").textContent=(v/1e6).toLocaleString("pt-BR",{maximumFractionDigits:1})+" mi";}contador((ig.perfil&&ig.perfil.seguidores)||42586);
   const igAg=ig.agenda&&ig.agenda.itens&&ig.agenda.itens.length?ig.agenda:null;
   // usa a agenda do Instagram se for mais nova que a manual
   const base=igAg&&(!man||ig.agenda.mes!==man.mes||ig.agenda.itens.length>=man.itens.length)?igAg:man;

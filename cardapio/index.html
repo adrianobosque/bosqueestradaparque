@@ -245,7 +245,7 @@ try{if(localStorage.getItem("bosque_how_visto"))document.getElementById("how").o
 fetch("../data/menu.json?"+Date.now()).then(r=>r.json()).then(d=>{
   // agrupa por tema (funciona com os nomes do delivery e com os da base de produtos)
   const TEMA=[[/caf[eé]|manh/i,"Café da manha"],[/almo|parrilla|bbq|prato/i,"Da parrilla"],[/especia|sandu|lanche/i,"Especiais da estrada"],[/por[cç]/i,"Porções"],[/cerve|drink|chopp|dose|vinho|caipi|bebida alco/i,"Cervejas e drinks"],[/bebida|refri|suco|[áa]gua|soda/i,"Bebidas"],[/sobremesa|doce/i,"Sobremesas"]];
-  const grupos={};d.cats.filter(c=>!/tabac|cigar|fumo/i.test(c.c)).forEach(c=>{const t=(TEMA.find(([r])=>r.test(c.c))||[])[1];const key=t||c.c;(grupos[key]=grupos[key]||{...(CATS[key]||{t:c.c,ic:"🍽️",o:9}),raw:key,i:[]}).i.push(...c.i);});
+  const grupos={};d.cats.forEach(c=>{const t=(TEMA.find(([r])=>r.test(c.c))||[])[1];const key=t||c.c;(grupos[key]=grupos[key]||{...(CATS[key]||{t:c.c,ic:"🍽️",o:9}),raw:key,i:[]}).i.push(...c.i);});
   let k=0;DATA=Object.values(grupos).sort((a,b)=>a.o-b.o);
   DATA.forEach((c,ci)=>c.i.forEach(it=>{it._k=k++;it._c=ci;it._ic=c.ic;IDX[it._k]=it}));
   render("");

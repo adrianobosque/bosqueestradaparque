@@ -374,13 +374,12 @@ def sync_menu_base(token, loja):
                     ativos[str(k).strip().lower()] = ativos.get(str(k).strip().lower(), False) or on
     except Exception as e:
         print("menuProducts falhou (segue só com sellable-things):", e)
-    totem = set()
+    totem = {}
     try:  # o que o totem/QR Code mostra hoje = o que fica ativo no site
         for c in zig("getCurrentOrNextMenu", {}).get("categories", []):
             for q in c.get("products", []):
-                if q.get("isActive", True):
-                    totem.add((q.get("name") or "").strip().lower())
-        print(f"totem: {len(totem)} itens ativos", flush=True)
+                totem[(q.get("name") or "").strip().lower()] = q.get("isActive", True) is not False
+        print(f"QR Code: {sum(totem.values())} ativos, {len(totem) - sum(totem.values())} desativados", flush=True)
     except Exception as e:
         print("totem não lido (usa só a base):", e, flush=True)
     menu_nome = os.environ.get("ZIG_MENU", "").strip().lower()
@@ -393,14 +392,14 @@ def sync_menu_base(token, loja):
             continue
         if p.get("isActive", p.get("active", True)) is False:
             continue  # desativado na base → some do site
-        if totem and (p.get("name") or "").strip().lower() not in totem:
+        if totem.get((p.get("name") or "").strip().lower()) is False:
             fora.append(p.get("name"))
-            continue  # não aparece no totem → some do site
+            continue  # desativado no cardápio da Zig → some do site
         if ativos:
             chave = next((ativos[k] for k in (str(p.get("id")).lower(), str(p.get("productId") or "").lower(), (p.get("name") or "").strip().lower()) if k in ativos), None)
-            if not chave:
+            if chave is False:
                 fora.append(p.get("name"))
-                continue  # inativo ou fora do cardápio do totem → some do site
+                continue  # desativado na base → some do site
         bars = p.get("bars") or []
         it = {"n": p["name"], "p": p.get("value") or 0, "img": ((p.get("image") or {}).get("url"))}
         if p.get("description"):

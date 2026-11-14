@@ -364,13 +364,9 @@ def zig_erp(rota, loja, token):
 def sync_menu_base(token, loja):
     """Cardápio a partir da BASE de produtos do Zig (API de integração oficial): ativo/inativo e sem estoque vêm da base."""
     vend = zig_erp("sellable-things", loja, token)
-    if vend:
-        print("sellable exemplo:", {k: v for k, v in vend[0].items() if not isinstance(v, (list, dict))}, flush=True)
     ativos = {}
     try:
         mp = zig_erp("menuProducts", loja, token)
-        if mp:
-            print("menuProducts exemplo:", {k: mp[0].get(k) for k in list(mp[0])[:12]}, flush=True)
         for p in mp:
             on = p.get("isActive", p.get("active", True)) is not False
             for k in (p.get("id"), p.get("productId"), (p.get("product") or {}).get("id"), p.get("name"), (p.get("product") or {}).get("name")):
@@ -378,6 +374,15 @@ def sync_menu_base(token, loja):
                     ativos[str(k).strip().lower()] = ativos.get(str(k).strip().lower(), False) or on
     except Exception as e:
         print("menuProducts falhou (segue só com sellable-things):", e)
+    totem = set()
+    try:  # o que o totem/QR Code mostra hoje = o que fica ativo no site
+        for c in zig("getCurrentOrNextMenu", {}).get("categories", []):
+            for q in c.get("products", []):
+                if q.get("isActive", True):
+                    totem.add((q.get("name") or "").strip().lower())
+        print(f"totem: {len(totem)} itens ativos", flush=True)
+    except Exception as e:
+        print("totem não lido (usa só a base):", e, flush=True)
     menu_nome = os.environ.get("ZIG_MENU", "").strip().lower()
     cats, ordem, fora = {}, [], []
     for p in vend:
@@ -388,6 +393,9 @@ def sync_menu_base(token, loja):
             continue
         if p.get("isActive", p.get("active", True)) is False:
             continue  # desativado na base → some do site
+        if totem and (p.get("name") or "").strip().lower() not in totem:
+            fora.append(p.get("name"))
+            continue  # não aparece no totem → some do site
         if ativos:
             chave = next((ativos[k] for k in (str(p.get("id")).lower(), str(p.get("productId") or "").lower(), (p.get("name") or "").strip().lower()) if k in ativos), None)
             if not chave:
@@ -428,6 +436,12 @@ def sync_menu():
         except urllib.error.HTTPError as e:
             raise RuntimeError(f"base Zig {e.code}: {e.read().decode(errors='ignore')[:200]}") from None
         out = ROOT / "data" / "menu.json"
+        try:
+            if json.loads(out.read_text()).get("cats") == cats:
+                print("cardápio: sem mudança na base", flush=True)
+                return
+        except Exception:
+            pass
         out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "fonte": "base", "cats": cats}, ensure_ascii=False))
         print(f"cardápio (base Zig): {sum(len(c['i']) for c in cats)} itens em {len(cats)} categorias", flush=True)
         return
@@ -464,7 +478,9 @@ def sync_menu():
     print(f"cardápio: {sum(len(c['i']) for c in cats)} itens em {len(cats)} categorias", flush=True)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and sys.argv[1:] == ["cardapio"]:
+    sync_menu()  # rodada rápida, só o cardápio (workflow cardapio.yml)
+elif __name__ == "__main__":
     main()
     try:
         sync_menu()

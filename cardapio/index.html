@@ -31,11 +31,11 @@ img{display:block;max-width:100%}
 .top a.back{margin-left:auto;align-self:flex-start;color:var(--creme);font:800 12px Overpass;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--linha);border-radius:30px;padding:6px 12px;white-space:nowrap}
 
 /* barra de categorias */
-.nav{position:sticky;top:0;z-index:20;background:rgba(29,36,18,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.nav{position:sticky;top:0;z-index:20;background:rgba(29,36,18,.96);border-bottom:1px solid var(--linha)}
 .nav .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding-top:8px;padding-bottom:8px}
 .nav .wrap::-webkit-scrollbar{display:none}
 .nav a{text-decoration:none;color:var(--creme);font:800 12px Overpass;text-transform:uppercase;border:1.5px solid var(--linha);border-radius:30px;padding:6px 11px;white-space:nowrap}
-html,body{overflow-x:hidden}
+main,.wrap{overflow-x:clip}
 .nav a.on{background:var(--ouro);border-color:var(--ouro);color:#1D2412}
 .search{margin:12px 0 0;position:relative}
 .search input{width:100%;background:rgba(248,240,208,.06);border:1.5px solid var(--linha);border-radius:12px;color:var(--creme);font:16px Bitter;padding:11px 14px 11px 40px;outline:none}
@@ -171,6 +171,7 @@ const CATS={
   "Porções":{t:"Porções",ic:"🍟",sub:"Para dividir na mesa",o:4,disp:1},
   "Cervejas e drinks":{t:"Cervejas & Drinks",ic:"🍺",sub:"Balde com gelo a partir de 3 ou 5 unidades",o:5},
   "Bebidas":{t:"Bebidas",ic:"🥤",sub:"Refrigerantes, sucos e águas",o:6},
+  "Sobremesas":{t:"Sobremesas",ic:"🍨",sub:"Para fechar a parada com doce",o:5.5},
 };
 // assinaturas da casa (foto grande) e fotos reais do Bosque para elas
 const SIG={"bandeja houston":"","bandeja dallas":"","bandeja austin":"","bandeja texana":"","brisket texano":"","costela do rancho casal":"../img/costela.jpg","brisket 312":"","costela 94":"","caipira do bosque":""};
@@ -243,8 +244,8 @@ function spy(){
 try{if(localStorage.getItem("bosque_how_visto"))document.getElementById("how").open=false;localStorage.setItem("bosque_how_visto","1")}catch(e){}
 fetch("../data/menu.json?"+Date.now()).then(r=>r.json()).then(d=>{
   // agrupa por tema (funciona com os nomes do delivery e com os da base de produtos)
-  const TEMA=[[/caf[eé]|manh/i,"Café da manha"],[/almo|parrilla|bbq|prato/i,"Da parrilla"],[/especia|sandu|lanche/i,"Especiais da estrada"],[/por[cç]/i,"Porções"],[/cerve|drink|chopp|dose|vinho|caipi|bebida alco/i,"Cervejas e drinks"],[/bebida|refri|suco|[áa]gua|soda/i,"Bebidas"]];
-  const grupos={};d.cats.forEach(c=>{const t=(TEMA.find(([r])=>r.test(c.c))||[])[1];const key=t||c.c;(grupos[key]=grupos[key]||{...(CATS[key]||{t:c.c,ic:"🍽️",o:9}),raw:key,i:[]}).i.push(...c.i);});
+  const TEMA=[[/caf[eé]|manh/i,"Café da manha"],[/almo|parrilla|bbq|prato/i,"Da parrilla"],[/especia|sandu|lanche/i,"Especiais da estrada"],[/por[cç]/i,"Porções"],[/cerve|drink|chopp|dose|vinho|caipi|bebida alco/i,"Cervejas e drinks"],[/bebida|refri|suco|[áa]gua|soda/i,"Bebidas"],[/sobremesa|doce/i,"Sobremesas"]];
+  const grupos={};d.cats.filter(c=>!/tabac|cigar|fumo/i.test(c.c)).forEach(c=>{const t=(TEMA.find(([r])=>r.test(c.c))||[])[1];const key=t||c.c;(grupos[key]=grupos[key]||{...(CATS[key]||{t:c.c,ic:"🍽️",o:9}),raw:key,i:[]}).i.push(...c.i);});
   let k=0;DATA=Object.values(grupos).sort((a,b)=>a.o-b.o);
   DATA.forEach((c,ci)=>c.i.forEach(it=>{it._k=k++;it._c=ci;it._ic=c.ic;IDX[it._k]=it}));
   render("");

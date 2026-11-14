@@ -245,15 +245,21 @@ try{if(localStorage.getItem("bosque_how_visto"))document.getElementById("how").o
 // cardápio ao vivo (Cloudflare Worker); se falhar, usa a cópia do site
 const LIVE="https://cardapio-bosque.adriano-944.workers.dev/";
 function pega(u,ms){const c=new AbortController();setTimeout(()=>c.abort(),ms);return fetch(u,{signal:c.signal}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{if(!d.cats||!d.cats.length)throw 0;return d})}
-(LIVE?pega(LIVE,4000).catch(()=>pega("../data/menu.json?"+Date.now(),8000)):pega("../data/menu.json?"+Date.now(),8000)).then(d=>{
+let ULT="";
+function aplica(d){
+  const sig=JSON.stringify(d.cats);if(sig===ULT)return;ULT=sig;IDX.length=0;
   // agrupa por tema (funciona com os nomes do delivery e com os da base de produtos)
   const TEMA=[[/caf[eé]|manh/i,"Café da manha"],[/almo|parrilla|bbq|prato/i,"Da parrilla"],[/especia|sandu|lanche/i,"Especiais da estrada"],[/por[cç]/i,"Porções"],[/cerve|drink|chopp|dose|vinho|caipi|bebida alco/i,"Cervejas e drinks"],[/bebida|refri|suco|[áa]gua|soda/i,"Bebidas"],[/sobremesa|doce/i,"Sobremesas"]];
   const grupos={};d.cats.forEach(c=>{const t=(TEMA.find(([r])=>r.test(c.c))||[])[1];const key=t||c.c;(grupos[key]=grupos[key]||{...(CATS[key]||{t:c.c,ic:"🍽️",o:9}),raw:key,i:[]}).i.push(...c.i);});
   let k=0;DATA=Object.values(grupos).sort((a,b)=>a.o-b.o);
   DATA.forEach((c,ci)=>c.i.forEach(it=>{it._k=k++;it._c=ci;it._ic=c.ic;IDX[it._k]=it}));
-  render("");
+  render(document.getElementById("q").value||"");
   if(d.updated){const u=new Date(d.updated);document.getElementById("upd").textContent=`Cardápio atualizado em ${u.toLocaleDateString("pt-BR")} às ${u.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}. Preços e disponibilidade podem mudar.`}
-}).catch(()=>{document.getElementById("menu").innerHTML='<p class="empty">Não foi possível carregar o cardápio agora. Tente novamente em instantes.</p>'});
+}
+// 1) mostra na hora a cópia do site; 2) confere a Zig ao vivo e troca só se algo mudou
+const local=pega("../data/menu.json?"+Date.now(),8000).then(aplica);
+const vivo=LIVE?pega(LIVE+"?"+Date.now(),20000).then(aplica):Promise.reject();
+Promise.any([local,vivo]).catch(()=>{document.getElementById("menu").innerHTML='<p class="empty">Não foi possível carregar o cardápio agora. Tente novamente em instantes.</p>'});
 </script>
 </body>
 </html>

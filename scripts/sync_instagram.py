@@ -291,23 +291,43 @@ def main():
 YT_CHANNEL = "UCt4hiMCiFigPsZV6q_hJ8zg"
 
 
+def yt_ids():
+    """IDs dos vídeos do canal: lê as páginas de Vídeos, Shorts e Lives do canal; o feed RSS fica só como reserva."""
+    ids = []
+    h = {"User-Agent": UA, "Accept-Language": "pt-BR,pt;q=0.9", "Cookie": "CONSENT=YES+1; SOCS=CAI"}
+    for aba in ("videos", "shorts", "streams"):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(f"https://www.youtube.com/channel/{YT_CHANNEL}/{aba}", headers=h), timeout=30) as r:
+                html = r.read().decode("utf-8", "ignore")
+            for v in re.findall(r'"videoId":"([\w-]{11})"', html):
+                if v not in ids:
+                    ids.append(v)
+        except Exception as e:
+            print(f"youtube aba {aba} falhou:", e, flush=True)
+    if not ids:
+        import xml.etree.ElementTree as ET
+        with urllib.request.urlopen(urllib.request.Request(f"https://www.youtube.com/feeds/videos.xml?channel_id={YT_CHANNEL}", headers={"User-Agent": UA}), timeout=30) as r:
+            root = ET.fromstring(r.read())
+        ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
+        ids = [e.find("yt:videoId", ns).text for e in root.findall("a:entry", ns)]
+    return ids[:25]
+
+
 def sync_youtube():
-    """Lista os vídeos do canal (feed RSS, sem chave) e guarda só os que podem tocar fora do YouTube."""
-    import xml.etree.ElementTree as ET
+    """Guarda só os vídeos do canal que podem tocar fora do YouTube (o oEmbed também traz o título)."""
     out = ROOT / "data" / "youtube.json"
-    with urllib.request.urlopen(urllib.request.Request(f"https://www.youtube.com/feeds/videos.xml?channel_id={YT_CHANNEL}", headers={"User-Agent": UA}), timeout=30) as r:
-        root = ET.fromstring(r.read())
-    ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
     ok, bloq = [], 0
-    for e in root.findall("a:entry", ns):
-        vid = e.find("yt:videoId", ns).text
-        tit = e.find("a:title", ns).text
+    for vid in yt_ids():
         try:  # oEmbed responde 401/403/404 quando o vídeo não pode ser incorporado
-            urllib.request.urlopen(urllib.request.Request("https://www.youtube.com/oembed?format=json&url=" +
-                                   urllib.parse.quote(f"https://www.youtube.com/watch?v={vid}"), headers={"User-Agent": UA}), timeout=15).read()
-            ok.append({"id": vid, "titulo": tit})
+            with urllib.request.urlopen(urllib.request.Request("https://www.youtube.com/oembed?format=json&url=" +
+                                        urllib.parse.quote(f"https://www.youtube.com/watch?v={vid}"), headers={"User-Agent": UA}), timeout=15) as r:
+                ok.append({"id": vid, "titulo": json.load(r).get("title", "")})
         except Exception:
             bloq += 1
+        if len(ok) >= 15:
+            break
+    if not ok:
+        raise RuntimeError("nenhum vídeo encontrado (mantém a lista atual)")
     out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "videos": ok}, ensure_ascii=False, indent=1))
     print(f"youtube: {len(ok)} vídeos liberados, {bloq} bloqueados para incorporar", flush=True)
 
@@ -344,22 +364,35 @@ def zig_erp(rota, loja, token):
 def sync_menu_base(token, loja):
     """Cardápio a partir da BASE de produtos do Zig (API de integração oficial): ativo/inativo e sem estoque vêm da base."""
     vend = zig_erp("sellable-things", loja, token)
+    if vend:
+        print("sellable exemplo:", {k: v for k, v in vend[0].items() if not isinstance(v, (list, dict))}, flush=True)
     ativos = {}
     try:
-        for p in zig_erp("menuProducts", loja, token):
-            ativos[str(p.get("id"))] = bool(p.get("isActive", True))
+        mp = zig_erp("menuProducts", loja, token)
+        if mp:
+            print("menuProducts exemplo:", {k: mp[0].get(k) for k in list(mp[0])[:12]}, flush=True)
+        for p in mp:
+            on = p.get("isActive", p.get("active", True)) is not False
+            for k in (p.get("id"), p.get("productId"), (p.get("product") or {}).get("id"), p.get("name"), (p.get("product") or {}).get("name")):
+                if k:
+                    ativos[str(k).strip().lower()] = ativos.get(str(k).strip().lower(), False) or on
     except Exception as e:
         print("menuProducts falhou (segue só com sellable-things):", e)
     menu_nome = os.environ.get("ZIG_MENU", "").strip().lower()
-    cats, ordem = {}, []
+    cats, ordem, fora = {}, [], []
     for p in vend:
         if menu_nome and ((p.get("menu") or {}).get("name") or "").strip().lower() != menu_nome:
             continue
         cat = ((p.get("category") or {}).get("name") or "Outros").strip()
         if IGNORA_CAT.search(cat) or not (p.get("value") or 0):
             continue
-        if ativos and ativos.get(str(p.get("id"))) is False:
+        if p.get("isActive", p.get("active", True)) is False:
             continue  # desativado na base → some do site
+        if ativos:
+            chave = next((ativos[k] for k in (str(p.get("id")).lower(), str(p.get("productId") or "").lower(), (p.get("name") or "").strip().lower()) if k in ativos), None)
+            if not chave:
+                fora.append(p.get("name"))
+                continue  # inativo ou fora do cardápio do totem → some do site
         bars = p.get("bars") or []
         it = {"n": p["name"], "p": p.get("value") or 0, "img": ((p.get("image") or {}).get("url"))}
         if p.get("description"):
@@ -381,6 +414,7 @@ def sync_menu_base(token, loja):
     if not out:
         raise RuntimeError("base vazia (confira ZIG_LOJA / ZIG_MENU)")
     print("categorias da base:", [(c["c"], len(c["i"])) for c in out], flush=True)
+    print(f"fora do site (desativados): {len(fora)}", fora[:15], flush=True)
     return out
 
 

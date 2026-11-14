@@ -2,8 +2,8 @@ name: Sincronizar Instagram e Google
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
-  workflow_dispatch:
+    - cron: "17 */3 * * *"   # a cada 3 horas
+  workflow_dispatch:          # botão "Run workflow" para rodar na hora
 
 permissions:
   contents: write
@@ -21,6 +21,9 @@ jobs:
         continue-on-error: true
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          ZIG_TOKEN: ${{ secrets.ZIG_TOKEN }}
+          ZIG_LOJA: ${{ secrets.ZIG_LOJA }}
+          ZIG_MENU: ${{ vars.ZIG_MENU }}
       - run: python scripts/sync_google.py
         continue-on-error: true
         env:
@@ -30,4 +33,4 @@ jobs:
           git config user.name "bosque-bot"
           git config user.email "bot@bosqueestradaparque.com.br"
           git add data
-          git diff --cached --quiet || (git commit -m "Atualiza agenda do Instagram e Google" && git push)
+          git diff --cached --quiet || (git commit -m "Atualiza agenda do Instagram" && git push)

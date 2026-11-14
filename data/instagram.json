@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14T19:06:09.957349+00:00",
+ "updated": "2026-11-14T21:54:46.563602+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -83,11 +83,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44092,
-  "posts": 614,
+  "seguidores": 44091,
+  "posts": 615,
   "views": 7423157
  },
  "posts": [
+  {
+   "id": "18185523865386794",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Hotel California ao som de anibelleoficial no nosso almoco de sabado!! 🤠✌🏻🎻🎙️🎸",
+   "legenda": "Hotel California ao som de anibelleoficial no nosso almoco de sabado!! 🤠✌🏻🎻🎙️🎸",
+   "imagem": "data/img/18185523865386794.jpg",
+   "permalink": "https://www.instagram.com/reel/DfvLgHzSElY/",
+   "publicado": "2026-11-14T21:38:02+0000"
+  },
   {
    "id": "17913878502589318",
    "categoria": "novidades",
@@ -395,17 +406,6 @@
    "imagem": "data/img/18090237848694793.jpg",
    "permalink": "https://www.instagram.com/p/Dd4UfevyCjy/",
    "publicado": "2026-09-29T17:42:37+0000"
-  },
-  {
-   "id": "18489220579107876",
-   "categoria": "musica",
-   "data_evento": "03/10",
-   "horario": "12h30",
-   "titulo": "Outubro chegou — e a estrada já tem trilha sonora. 🤘🌲🏍️",
-   "legenda": "Outubro chegou — e a estrada já tem trilha sonora. 🤘🌲🏍️\n\nUm mês inteiro de encontros, boa comida e música ao vivo no Bosque Estrada Parque.\n\n🎸 PROGRAMAÇÃO DE OUTUBRO\n\nSÁBADO · 03/10 — Duo Aragramma\nDOMINGO · 04/10 — Geraldo Barba Blue\n\nSÁBADO · 10/10 — Gu Salvator\nDOMINGO · 11/10 — Giovani Boss\nSEGUNDA · 12/10 · FERIADO DE NOSSA SENHORA APARECIDA — Leo Basilio\n\nSÁBADO · 17/10 — Fabio Buzatti\nDOMIN",
-   "imagem": "data/img/18489220579107876.jpg",
-   "permalink": "https://www.instagram.com/p/Dd2k9uAx7J1/",
-   "publicado": "2026-09-29T01:29:57+0000"
   }
  ]
 }

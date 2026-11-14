@@ -309,8 +309,126 @@ def sync_youtube():
     print(f"youtube: {len(ok)} vídeos liberados, {bloq} bloqueados para incorporar", flush=True)
 
 
+ZIG_API = "https://api-client.delivery.zigcore.com.br/"
+ZIG_ORIGIN = "https://bosqueestradaparque.namesa.online"
+
+
+def zig(ep, args):
+    import uuid
+    body = {"args": {"auth": None, **args}, "name": ep, "requestId": uuid.uuid4().hex, "version": 3,
+            "extra": {"tz": "America/Sao_Paulo"},
+            "deviceInfo": {"id": "bosque-site-sync", "language": "pt-BR", "timezone": "America/Sao_Paulo",
+                           "type": "web", "version": "", "platform": {"browserUserAgent": "Mozilla/5.0"}}}
+    req = urllib.request.Request(ZIG_API + ep, data=json.dumps(body).encode(), method="POST",
+                                 headers={"Content-Type": "application/json", "Origin": ZIG_ORIGIN, "Referer": ZIG_ORIGIN + "/"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        d = json.load(r)
+    if d.get("error"):
+        raise RuntimeError(d["error"])
+    return d["result"]
+
+
+IGNORA_CAT = re.compile(r"adicion|insumo|supply|interno|teste|opcion|complemento|ingrediente", re.I)
+
+
+def zig_erp(rota, loja, token):
+    req = urllib.request.Request(f"https://api.zigcore.com.br/integration/erp/{rota}?loja={urllib.parse.quote(loja)}",
+                                 headers={"Authorization": token, "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+def sync_menu_base(token, loja):
+    """Cardápio a partir da BASE de produtos do Zig (API de integração oficial): ativo/inativo e sem estoque vêm da base."""
+    vend = zig_erp("sellable-things", loja, token)
+    ativos = {}
+    try:
+        for p in zig_erp("menuProducts", loja, token):
+            ativos[str(p.get("id"))] = bool(p.get("isActive", True))
+    except Exception as e:
+        print("menuProducts falhou (segue só com sellable-things):", e)
+    menu_nome = os.environ.get("ZIG_MENU", "").strip().lower()
+    cats, ordem = {}, []
+    for p in vend:
+        if menu_nome and ((p.get("menu") or {}).get("name") or "").strip().lower() != menu_nome:
+            continue
+        cat = ((p.get("category") or {}).get("name") or "Outros").strip()
+        if IGNORA_CAT.search(cat) or not (p.get("value") or 0):
+            continue
+        if ativos and ativos.get(str(p.get("id"))) is False:
+            continue  # desativado na base → some do site
+        bars = p.get("bars") or []
+        it = {"n": p["name"], "p": p.get("value") or 0, "img": ((p.get("image") or {}).get("url"))}
+        if p.get("description"):
+            it["d"] = p["description"]
+        if bars and all(b.get("isOutOfStock") for b in bars):
+            it["off"] = 1  # sem estoque → "Esgotado hoje"
+        ops = []
+        for sec in sorted(p.get("mountableSections") or [], key=lambda x: x.get("order") or 0):
+            its = [[i.get("name"), i["price"]] if i.get("price") else i.get("name") for i in sec.get("items") or [] if i.get("name")]
+            if its:
+                ops.append({"t": sec.get("title"), "min": sec.get("min"), "max": sec.get("max"), "i": its})
+        if ops:
+            it["o"] = ops
+        if cat not in cats:
+            cats[cat] = []
+            ordem.append(cat)
+        cats[cat].append(it)
+    out = [{"c": c, "i": cats[c]} for c in ordem]
+    if not out:
+        raise RuntimeError("base vazia (confira ZIG_LOJA / ZIG_MENU)")
+    print("categorias da base:", [(c["c"], len(c["i"])) for c in out], flush=True)
+    return out
+
+
+def sync_menu():
+    """Cardápio do site (cardapio/) a partir do cardápio do Zig: preços, itens, opcionais e disponibilidade."""
+    token, loja = os.environ.get("ZIG_TOKEN"), os.environ.get("ZIG_LOJA")
+    if token and loja:
+        cats = sync_menu_base(token, loja)
+        out = ROOT / "data" / "menu.json"
+        out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "fonte": "base", "cats": cats}, ensure_ascii=False))
+        print(f"cardápio (base Zig): {sum(len(c['i']) for c in cats)} itens em {len(cats)} categorias", flush=True)
+        return
+    m = zig("getCurrentOrNextMenu", {})
+    cats = []
+    for cat in m.get("categories", []):
+        itens = []
+        for p in cat.get("products", []):
+            it = {"n": p["name"], "p": p.get("price") or 0,
+                  "img": (p.get("imageUrl") or "").split("/images/")[-1] or None}
+            if p.get("description"):
+                it["d"] = p["description"]
+            if not p.get("isActive", True):
+                it["off"] = 1
+            if p.get("isMountable"):
+                try:
+                    full = zig("getCompleteMenuProduct", {"menuId": m["id"], "productId": p["id"]})
+                    ops = []
+                    for sec in full.get("mountableSections") or []:
+                        its = [[o["name"], o["price"]] if o.get("price") else o["name"] for o in sec.get("products") or []]
+                        if its:
+                            ops.append({"t": sec.get("title"), "min": sec.get("min"), "max": sec.get("max"), "i": its})
+                    if ops:
+                        it["o"] = ops
+                except Exception as e:
+                    print("opcionais falharam:", p["name"], e)
+            itens.append(it)
+        if itens:
+            cats.append({"c": cat["name"], "i": itens})
+    if not cats:
+        raise RuntimeError("cardápio vazio")
+    out = ROOT / "data" / "menu.json"
+    out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "cats": cats}, ensure_ascii=False))
+    print(f"cardápio: {sum(len(c['i']) for c in cats)} itens em {len(cats)} categorias", flush=True)
+
+
 if __name__ == "__main__":
     main()
+    try:
+        sync_menu()
+    except Exception as e:
+        print("cardápio falhou (mantém o atual):", e)
     try:
         sync_youtube()
     except Exception as e:

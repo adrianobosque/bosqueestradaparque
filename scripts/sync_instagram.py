@@ -17,9 +17,12 @@ MUSICA = r"ao vivo|show|banda|m[uú]sica|ac[uú]stico|rock|country|blues|folk|pa
 EVENTOS = r"evento|encontro|motoclube|moto ?clube|carros antigos|festa|festival|feriado|anivers[aá]rio|inscri[cç]|ingresso|especial de|dia d[aeo]s?|#evento"
 
 
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+
+
 def get(url):
     try:
-        with urllib.request.urlopen(url, timeout=30) as r:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
             return json.load(r)
     except urllib.error.HTTPError as e:
         raise RuntimeError(f"{e.code} {e.read().decode(errors='ignore')[:300]}") from None
@@ -292,7 +295,7 @@ def sync_youtube():
     """Lista os vídeos do canal (feed RSS, sem chave) e guarda só os que podem tocar fora do YouTube."""
     import xml.etree.ElementTree as ET
     out = ROOT / "data" / "youtube.json"
-    with urllib.request.urlopen(f"https://www.youtube.com/feeds/videos.xml?channel_id={YT_CHANNEL}", timeout=30) as r:
+    with urllib.request.urlopen(urllib.request.Request(f"https://www.youtube.com/feeds/videos.xml?channel_id={YT_CHANNEL}", headers={"User-Agent": UA}), timeout=30) as r:
         root = ET.fromstring(r.read())
     ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
     ok, bloq = [], 0
@@ -300,8 +303,8 @@ def sync_youtube():
         vid = e.find("yt:videoId", ns).text
         tit = e.find("a:title", ns).text
         try:  # oEmbed responde 401/403/404 quando o vídeo não pode ser incorporado
-            urllib.request.urlopen("https://www.youtube.com/oembed?format=json&url=" +
-                                   urllib.parse.quote(f"https://www.youtube.com/watch?v={vid}"), timeout=15).read()
+            urllib.request.urlopen(urllib.request.Request("https://www.youtube.com/oembed?format=json&url=" +
+                                   urllib.parse.quote(f"https://www.youtube.com/watch?v={vid}"), headers={"User-Agent": UA}), timeout=15).read()
             ok.append({"id": vid, "titulo": tit})
         except Exception:
             bloq += 1
@@ -320,7 +323,7 @@ def zig(ep, args):
             "deviceInfo": {"id": "bosque-site-sync", "language": "pt-BR", "timezone": "America/Sao_Paulo",
                            "type": "web", "version": "", "platform": {"browserUserAgent": "Mozilla/5.0"}}}
     req = urllib.request.Request(ZIG_API + ep, data=json.dumps(body).encode(), method="POST",
-                                 headers={"Content-Type": "application/json", "Origin": ZIG_ORIGIN, "Referer": ZIG_ORIGIN + "/"})
+                                 headers={"Content-Type": "application/json", "Origin": ZIG_ORIGIN, "Referer": ZIG_ORIGIN + "/", "User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
         d = json.load(r)
     if d.get("error"):
@@ -333,7 +336,7 @@ IGNORA_CAT = re.compile(r"adicion|insumo|supply|interno|teste|opcion|complemento
 
 def zig_erp(rota, loja, token):
     req = urllib.request.Request(f"https://api.zigcore.com.br/integration/erp/{rota}?loja={urllib.parse.quote(loja)}",
-                                 headers={"Authorization": token, "Accept": "application/json"})
+                                 headers={"Authorization": token, "Accept": "application/json", "User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 
@@ -384,8 +387,12 @@ def sync_menu_base(token, loja):
 def sync_menu():
     """Cardápio do site (cardapio/) a partir do cardápio do Zig: preços, itens, opcionais e disponibilidade."""
     token, loja = os.environ.get("ZIG_TOKEN"), os.environ.get("ZIG_LOJA")
+    print("cardápio: fonte =", "base Zig (API de integração)" if token and loja else "delivery (sem ZIG_TOKEN/ZIG_LOJA)", flush=True)
     if token and loja:
-        cats = sync_menu_base(token, loja)
+        try:
+            cats = sync_menu_base(token, loja)
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"base Zig {e.code}: {e.read().decode(errors='ignore')[:200]}") from None
         out = ROOT / "data" / "menu.json"
         out.write_text(json.dumps({"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "fonte": "base", "cats": cats}, ensure_ascii=False))
         print(f"cardápio (base Zig): {sum(len(c['i']) for c in cats)} itens em {len(cats)} categorias", flush=True)

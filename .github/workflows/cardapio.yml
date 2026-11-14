@@ -1,0 +1,36 @@
+name: Cardápio rápido (Zig)
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # a cada 5 min (mínimo do GitHub)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cardapio
+  cancel-in-progress: false
+
+jobs:
+  cardapio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/sync_instagram.py cardapio
+        env:
+          ZIG_TOKEN: ${{ secrets.ZIG_TOKEN }}
+          ZIG_LOJA: ${{ secrets.ZIG_LOJA }}
+          ZIG_MENU: ${{ vars.ZIG_MENU }}
+      - run: |
+          git config user.name "bosque-bot"
+          git config user.email "bot@bosqueestradaparque.com.br"
+          git add data/menu.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Atualiza cardápio da Zig"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
+          exit 1

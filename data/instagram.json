@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15T21:55:46.139880+00:00",
+ "updated": "2026-11-16T03:33:28.963765+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -62,32 +62,61 @@
   ]
  },
  "semana": {
-  "post": "https://www.instagram.com/p/Dfn98JYEbU9/",
-  "publicado": "2026-11-12T02:19:32+0000",
+  "post": "https://www.instagram.com/p/DfyY79EjaoH/",
+  "publicado": "2026-11-16T03:27:50+0000",
   "itens": [
    {
-    "data": "14/11",
-    "artista": "Ani Belle",
+    "data": "20/11",
+    "artista": "Blind Smoke",
     "show": "12h30",
+    "obs": "Feriado",
     "cafe": "10h",
-    "foto": "data/img/17991768225090588_1.jpg"
+    "foto": "data/img/18134884681741838_1.jpg"
    },
    {
-    "data": "15/11",
-    "artista": "Rafa LeBeats",
+    "data": "21/11",
+    "artista": "Gu Salvator",
+    "show": "12h30",
+    "cafe": "10h",
+    "foto": "data/img/18134884681741838_2.jpg"
+   },
+   {
+    "data": "22/11",
+    "artista": "Johnny Voxx",
     "show": "13h",
-    "obs": "Feriado",
     "cafe": "8h",
-    "foto": "data/img/17991768225090588_2.jpg"
+    "foto": "data/img/18134884681741838_3.jpg"
    }
   ]
  },
  "perfil": {
-  "seguidores": 44109,
-  "posts": 618,
-  "views": 7433634
+  "seguidores": 44110,
+  "posts": 622,
+  "views": 7454291
  },
  "posts": [
+  {
+   "id": "18134884681741838",
+   "categoria": "musica",
+   "data_evento": "22/11",
+   "horario": "10h",
+   "titulo": "📅 20–22/11 · Feriadão com música ao vivo",
+   "legenda": "📅 20–22/11 · Feriadão com música ao vivo\n\nTrês dias de estrada, café western e show no Bosque 🎸\n\n🗓 Sex 20 (feriado) · Blind Smoke — café 10h, almoço 12h, show 12h30\n\n🗓 Sáb 21 · Gu Salvator — café 10h, almoço 12h, show 12h30\n\n🗓 Dom 22 · Johnny Voxx — café 8h, almoço 12h, show 13h\n\n📍 Km 94 da Rota SP-312, Itu · Sem reserva · Pet friendly · Sem couvert\n\n☔ Em caso de chuva, o show pode ser cancelado s",
+   "imagem": "data/img/18134884681741838.jpg",
+   "permalink": "https://www.instagram.com/p/DfyY79EjaoH/",
+   "publicado": "2026-11-16T03:27:50+0000"
+  },
+  {
+   "id": "18182647819452494",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Sempre fantástica performance do rafaellebeats animando nosso almoço de domingo 🤠🙏🏻🎙️🎸",
+   "legenda": "Sempre fantástica performance do rafaellebeats animando nosso almoço de domingo 🤠🙏🏻🎙️🎸",
+   "imagem": "data/img/18182647819452494.jpg",
+   "permalink": "https://www.instagram.com/reel/Dfx3cTXPVVb/",
+   "publicado": "2026-11-15T22:40:27+0000"
+  },
   {
    "id": "18185523865386794",
    "categoria": "novidades",
@@ -384,28 +413,6 @@
    "imagem": "data/img/18089906525241578.jpg",
    "permalink": "https://www.instagram.com/p/Dd-E4Skxv5Q/",
    "publicado": "2026-10-01T23:21:44+0000"
-  },
-  {
-   "id": "17919776106450408",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "🏍️🧡 7 anos de estrada, liberdade e histórias!",
-   "legenda": "🏍️🧡 7 anos de estrada, liberdade e histórias!\n\nFoi especial demais receber as Aceleradas no Bosque para celebrar essa trajetória 🥳🥳🥳\n\nMulheres, motos, amizade, música e muita energia boa reunidas no lugar certo: na estrada! 🔥\n\nQue venham muitos quilômetros e muitos encontros pela frente! 🤘\n\nBosque Estrada Parque — o destino de quem vive a estrada 🤠✌🏻\n\n#Aceleradas #BosqueEstradaParque #RotaSP312 #M",
-   "imagem": "data/img/17919776106450408.jpg",
-   "permalink": "https://www.instagram.com/reel/Dd7i4fDR2in/",
-   "publicado": "2026-09-30T23:47:17+0000"
-  },
-  {
-   "id": "18090237848694793",
-   "categoria": "musica",
-   "data_evento": "03/10",
-   "horario": "12h30",
-   "titulo": "🔥 OUTUBRO COMEÇA NA ESTRADA! 🤘🌲",
-   "legenda": "🔥 OUTUBRO COMEÇA NA ESTRADA! 🤘🌲\n\nPrimeiro final de semana do mês no Bosque com Café Western Texano, Parrilla & BBQ e muita música ao vivo!\n\n🎸 SÁBADO • 03/10\n⭐ Duo Aragramma\n🕧 A partir das 12h30\n\n🎸 DOMINGO • 04/10\n⭐ Geraldo Barba Blue\n🕐 A partir das 13h\n\nE nos dois dias, a experiência começa cedo: Café Western Texano a partir das 8h. ☕🥓🔥\n\nÉ estrada, natureza, amigos, boa comida e aquela trilha sono",
-   "imagem": "data/img/18090237848694793.jpg",
-   "permalink": "https://www.instagram.com/p/Dd4UfevyCjy/",
-   "publicado": "2026-09-29T17:42:37+0000"
   }
  ]
 }

@@ -557,8 +557,11 @@ function feriado(dt){const k=String(dt.getDate()).padStart(2,"0")+"/"+String(dt.
 function eventosSEO(it){try{
   const ev=it.filter(i=>i.dt>=hoje).slice(0,12).map(i=>{const[h,m]=(i.show||"12h30").replace("h",":").split(":");const d=new Date(i.dt);d.setHours(+h||12,+(m||0));
     const iso=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}T${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}:00-03:00`;
-    return {"@type":"MusicEvent","name":`${i.artista} ao vivo no Bosque Estrada Parque`,"startDate":iso,"eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-      "location":{"@type":"Place","name":"Bosque Estrada Parque","address":"Rota SP-312, Km 94, Estrada Parque dos Romeiros, Itu - SP"},"performer":{"@type":"PerformingGroup","name":i.artista},
+    const f=new Date(d.getTime()+3*36e5),fim=iso.slice(0,11)+String(f.getHours()).padStart(2,"0")+":"+String(f.getMinutes()).padStart(2,"0")+":00-03:00";
+    const img=i.foto?(/^https?:/.test(i.foto)?i.foto:"https://www.bosqueestradaparque.com.br/"+i.foto.replace(/^\.?\//,"")):"https://www.bosqueestradaparque.com.br/img/hero.jpg";
+    return {"@type":"MusicEvent","name":`${i.artista} ao vivo no Bosque Estrada Parque`,"startDate":iso,"endDate":fim,"image":[img],
+      "offers":{"@type":"Offer","price":0,"priceCurrency":"BRL","availability":"https://schema.org/InStock","url":"https://www.bosqueestradaparque.com.br/","validFrom":iso.slice(0,10)},"eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "location":{"@type":"Place","name":"Bosque Estrada Parque","address":{"@type":"PostalAddress","streetAddress":"Rod. Estrada Parque dos Romeiros, Km 94","addressLocality":"Itu","addressRegion":"SP","postalCode":"13301-331","addressCountry":"BR"}},"performer":{"@type":"PerformingGroup","name":i.artista},
       "isAccessibleForFree":true,"description":"Música ao vivo (Rock, Country, Folk e Blues) sem couvert artístico.","organizer":{"@type":"Organization","name":"Bosque Estrada Parque","url":"https://www.bosqueestradaparque.com.br"}};});
   if(!ev.length)return;const sc=document.createElement("script");sc.type="application/ld+json";sc.textContent=JSON.stringify({"@context":"https://schema.org","@graph":ev});document.head.appendChild(sc);}catch(e){}}
 

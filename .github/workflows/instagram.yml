@@ -2,7 +2,7 @@ name: Sincronizar Instagram e Google
 
 on:
   schedule:
-    - cron: "17 */3 * * *"   # a cada 3 horas
+    - cron: "*/30 * * * *"   # a cada 30 min
   workflow_dispatch:          # botão "Run workflow" para rodar na hora
 
 permissions:
@@ -33,4 +33,8 @@ jobs:
           git config user.name "bosque-bot"
           git config user.email "bot@bosqueestradaparque.com.br"
           git add data
-          git diff --cached --quiet || (git commit -m "Atualiza agenda do Instagram" && git push)
+          git diff --cached --quiet && exit 0
+          git commit -m "Atualiza agenda do Instagram"
+          # tenta salvar até 4 vezes: o GitHub às vezes falha (erro 503) ou outro robô salvou antes
+          for i in 1 2 3 4; do git pull --rebase -q -X theirs && git push -q && exit 0; sleep $((i*10)); done
+          exit 1

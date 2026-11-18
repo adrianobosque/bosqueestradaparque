@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T21:43:33.845466+00:00",
+ "updated": "2026-11-18T22:43:51.380809+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -91,10 +91,21 @@
  },
  "perfil": {
   "seguidores": 44097,
-  "posts": 622,
-  "views": 7468551
+  "posts": 623,
+  "views": 7468552
  },
  "posts": [
+  {
+   "id": "18135597598809323",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Fds chegando 🤠✌🏻",
+   "legenda": "Fds chegando 🤠✌🏻",
+   "imagem": "data/img/18135597598809323.jpg",
+   "permalink": "https://www.instagram.com/reel/Df5iVJIyzRT/",
+   "publicado": "2026-11-18T22:05:21+0000"
+  },
   {
    "id": "18134884681741838",
    "categoria": "musica",
@@ -402,17 +413,6 @@
    "imagem": "data/img/18114453029037730.jpg",
    "permalink": "https://www.instagram.com/p/DeCEd61Ry23/",
    "publicado": "2026-10-03T12:34:43+0000"
-  },
-  {
-   "id": "18089906525241578",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "QUEM GOSTA, VOLTA! 🫶🏻",
-   "legenda": "QUEM GOSTA, VOLTA! 🫶🏻\n\nE talvez essa seja uma das coisas mais bonitas que construímos por aqui.\n\nVolta de moto.\nVolta de carro.\nVolta com os filhos, com os amigos, com o cachorro.\nVolta pelo café, pela parrilla, pela música.\nVolta para encontrar a turma.\nOu simplesmente para sentar embaixo das árvores e deixar o mundo correr um pouco mais devagar.\n\nEm pouco mais de um ano, vimos milhares de pessoa",
-   "imagem": "data/img/18089906525241578.jpg",
-   "permalink": "https://www.instagram.com/p/Dd-E4Skxv5Q/",
-   "publicado": "2026-10-01T23:21:44+0000"
   }
  ]
 }

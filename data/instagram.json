@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T18:20:31.277546+00:00",
+ "updated": "2026-11-19T19:29:47.478395+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -90,11 +90,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44094,
-  "posts": 623,
+  "seguidores": 44097,
+  "posts": 624,
   "views": 7470932
  },
  "posts": [
+  {
+   "id": "18081408260740660",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "🌲❤️ Bons momentos, boas histórias e memórias que ficam!",
+   "legenda": "🌲❤️ Bons momentos, boas histórias e memórias que ficam!\n\nEntre amigos, família, música boa e comida de verdade, cada visita ao Bosque vira uma experiência especial. 🏍️🎸🍖\n\nMais que uma parada, um destino!\n\n📍 Rota SP-312 | Km 94 | Itu/SP\n\nPega a estrada e vem pro Bosque! ✌🏻",
+   "imagem": "data/img/18081408260740660.jpg",
+   "permalink": "https://www.instagram.com/reel/Df7xxAvSVvX/",
+   "publicado": "2026-11-19T19:00:52+0000"
+  },
   {
    "id": "18135597598809323",
    "categoria": "novidades",
@@ -402,17 +413,6 @@
    "imagem": "data/img/18113513378125431.jpg",
    "permalink": "https://www.instagram.com/p/DeIod1gRY4n/",
    "publicado": "2026-10-06T01:44:56+0000"
-  },
-  {
-   "id": "18114453029037730",
-   "categoria": "musica",
-   "data_evento": "04/10",
-   "horario": "9h30",
-   "titulo": "⚠️ ATENÇÃO AO HORÁRIO DESTE DOMINGO!",
-   "legenda": "⚠️ ATENÇÃO AO HORÁRIO DESTE DOMINGO!\n\nExcepcionalmente amanhã, 04/10, devido às eleições, o Bosque iniciará suas operações a partir das 9h30, para que nossa equipe tenha tempo para votar. 🇧🇷 \n\n☕ Café Western Texano a partir das 9h30\n🔥 Almoço, Parrilla & BBQ normalmente\n🎸 Música ao vivo com Geraldo Barba Blue às 13h\n\nDepois do voto, pega a estrada e vem pro Bosque! 🏍️🌲\n\n📍 Rota SP-312 • KM 94 • Itu/",
-   "imagem": "data/img/18114453029037730.jpg",
-   "permalink": "https://www.instagram.com/p/DeCEd61Ry23/",
-   "publicado": "2026-10-03T12:34:43+0000"
   }
  ]
 }

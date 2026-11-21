@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T00:47:41.743701+00:00",
+ "updated": "2026-11-21T02:01:45.138115+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -90,11 +90,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44217,
-  "posts": 624,
-  "views": 7498128
+  "seguidores": 44221,
+  "posts": 625,
+  "views": 7499468
  },
  "posts": [
+  {
+   "id": "18082259081387843",
+   "categoria": "novidades",
+   "data_evento": null,
+   "horario": null,
+   "titulo": "Por aqui, as vacas aproveitam a sombra, os porquinhos fuçam a terra e a fumaça sobe devaga",
+   "legenda": "Por aqui, as vacas aproveitam a sombra, os porquinhos fuçam a terra e a fumaça sobe devagar do pit smoker. 🌳🔥\n\nAí chega a Bandeja Texana: brisket suculento, costela com barbecue, milho dourado e pão pra caprichar no molho. 🤠\n\nMarca quem vai dividir essa bandeja com você e vem pro Bosque neste fim de semana!\n\n📍 Bosque Estrada Parque · SP-312, Km 94 · Itu/SP",
+   "imagem": "data/img/18082259081387843.jpg",
+   "permalink": "https://www.instagram.com/reel/Df--ueGxb7B/",
+   "publicado": "2026-11-21T00:49:29+0000"
+  },
   {
    "id": "18081408260740660",
    "categoria": "musica",
@@ -402,17 +413,6 @@
    "imagem": "data/img/18107104802245233.jpg",
    "permalink": "https://www.instagram.com/reel/DeXMWxRkT5l/",
    "publicado": "2026-10-11T17:27:21+0000"
-  },
-  {
-   "id": "18113513378125431",
-   "categoria": "musica",
-   "data_evento": "10/10",
-   "horario": "12h30",
-   "titulo": "🔥 FINAL DE SEMANA PROLONGADO NO BOSQUE! 🌲🏍️",
-   "legenda": "🔥 FINAL DE SEMANA PROLONGADO NO BOSQUE! 🌲🏍️\n\nSão 3 dias de estrada, boa comida, natureza e música ao vivo no KM 94!\n\n🎸 SÁBADO • 10/10\nGu Salvator — a partir das 12h30\n\n🎸 DOMINGO • 11/10\nGiovani Boss — a partir das 13h\n\n🎸 SEGUNDA • 12/10 • FERIADO\nLeo Basilio — a partir das 13h\n🇧🇷 Nossa Senhora Aparecida + 🧒 Dia das Crianças\n\n☕ Todos os dias: Café Western Texano a partir das 8h\n🔥 Almoço & BBQ\n\nCham",
-   "imagem": "data/img/18113513378125431.jpg",
-   "permalink": "https://www.instagram.com/p/DeIod1gRY4n/",
-   "publicado": "2026-10-06T01:44:56+0000"
   }
  ]
 }

@@ -92,6 +92,16 @@ main,.wrap{overflow-x:clip}
 .tag.o{background:var(--ouro);color:#1D2412}
 .tag.x{background:var(--rust);color:var(--creme)}
 .off{opacity:.45}
+/* acabou neste fds: fica no cardápio com aviso, sem sumir */
+.esg .th,.esg .ph,.esg h3,.esg p,.esg .pr{filter:grayscale(.85);opacity:.55}
+.row.esg{position:relative}
+.acabou{display:flex;align-items:center;gap:9px;margin-top:7px;padding:7px 10px 7px 7px;border-radius:12px;background:linear-gradient(135deg,rgba(225,132,4,.16),rgba(166,72,40,.16));border:1px dashed rgba(225,132,4,.6);max-width:340px}
+.acabou svg{width:34px;height:34px;flex:none}
+.acabou b{display:block;font:900 12px/1.1 Overpass;text-transform:uppercase;letter-spacing:.05em;color:var(--ouro)}
+.acabou span{display:block;font-size:12.5px;line-height:1.3;opacity:.9}
+.canto{position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:5px;background:#A64828;color:var(--creme);font:900 10.5px Overpass;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:4px 9px 4px 5px;box-shadow:0 2px 8px rgba(0,0,0,.35);transform:rotate(2deg)}
+.canto svg{width:18px;height:18px}
+.panel .acabou{max-width:none;margin-top:12px}
 
 /* cartão gráfico (sem foto) */
 .gfx{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,rgba(225,132,4,.35),transparent 60%),linear-gradient(135deg,#2A3519,#12304A);font-size:30px}
@@ -197,11 +207,15 @@ function foto(it,cls){
 }
 function tags(it,c){
   const t=[];if(ehSig(it.n))t.push('<span class="tag o">Assinatura</span>');
-  if(it.off)t.push('<span class="tag x">Esgotado hoje</span>');
+  if(esgotado(it));
   else if(c.disp||DISP_ITEM.test(it.n))t.push('<span class="tag">Sujeito à disponibilidade</span>');
   if((it.o||[]).some(g=>!lixo(g)))t.push('<span class="tag">Personalizável</span>');
   return t.length?`<div class="tags">${t.join("")}</div>`:"";
 }
+// cowboy triste (desenho próprio)
+const COWBOY=`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="40" r="17" fill="#F2B53A"/><path d="M24 39q3-3 6 0M34 39q3-3 6 0" stroke="#3B2412" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M25 50q7-6 14 0" stroke="#3B2412" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M41 42c0 0-2.6 3.6-2.6 5.2a2.6 2.6 0 0 0 5.2 0C43.6 45.6 41 42 41 42z" fill="#5BB6E8"/><path d="M20 25c0-9 5-15 12-15s12 6 12 15c-7 2-17 2-24 0z" fill="#8A5326"/><path d="M20.5 23.5c7 2 16 2 23 0v3c-7 2-16 2-23 0z" fill="#3B2412"/><path d="M5 25c5 6 49 6 54 0 1 5-9 9-27 9S4 30 5 25z" fill="#A5692F"/></svg>`;
+const esgotado=it=>it.esg||it.off;
+const AVISO=`<div class="acabou">${COWBOY}<div><b>Acabou neste fds</b><span>Saiu tanto que acabou! Semana que vem tem mais — volta pra pegar o seu.</span></div></div>`;
 let DATA=[],IDX=[];
 function render(q){
   q=(q||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
@@ -210,10 +224,13 @@ function render(q){
     const its=c.i.filter(it=>!q||(nome(it.n)+" "+(it.d||"")).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q));
     if(!its.length)return;n+=its.length;
     const id="c"+ci;nav+=`<a href="#${id}" data-c="${id}">${c.ic} ${esc(c.t)}</a>`;
-    const sig=q?[]:its.filter(it=>ehSig(it.n)),rest=q?its:its.filter(it=>!ehSig(it.n));
+    // destaque só com o que tem; assinatura que acabou dá a vaga para outro item disponível (de preferência com foto)
+    its.forEach(it=>delete it._sub);const sigT=q?[]:its.filter(it=>ehSig(it.n)),sig=sigT.filter(it=>!esgotado(it)),faltam=sigT.length-sig.length;
+    const sub=faltam?its.filter(it=>!ehSig(it.n)&&!esgotado(it)).sort((a,b)=>(b.img?1:0)-(a.img?1:0)).slice(0,faltam):[];sub.forEach(it=>it._sub=1);sig.push(...sub);
+    const naoSig=it=>q||!sig.includes(it),rest=[...its.filter(it=>naoSig(it)&&!esgotado(it)),...its.filter(it=>naoSig(it)&&esgotado(it))];
     html+=`<section class="cat" id="${id}"><div class="cat-head${c.img&&!q?"":" plain"}" ${c.img&&!q?`style="background-image:url('${c.img}')"`:""}><div><h2><span class="ic">${c.ic}</span>${esc(c.t)}</h2>${c.sub?`<p>${esc(c.sub)}</p>`:""}</div></div>`;
-    if(sig.length)html+=`<div class="feat">${sig.map(it=>`<button class="fc${it.off?" off":""}" data-k="${it._k}">${foto(it,"ph")}<span class="star">⭐ Assinatura</span><div class="bd"><h3>${esc(nome(it.n))}</h3>${it.d?`<p>${esc(txt(it.d).replace(/\n/g," "))}</p>`:""}${preco(it.p)}${tags({...it,n:"_"},c).replace('<span class="tag o">Assinatura</span>',"")}</div></button>`).join("")}</div>`;
-    html+=`<div class="list">${rest.map(it=>`<button class="row${it.off?" off":""}" data-k="${it._k}">${foto(it,"th")}<div><h3>${esc(nome(it.n))}</h3>${it.d?`<p>${esc(txt(it.d).replace(/\n/g," · ").replace(/· ·/g,"·"))}</p>`:""}${tags(it,c)}</div>${preco(it.p)}</button>`).join("")}</div></section>`;
+    if(sig.length)html+=`<div class="feat">${sig.map(it=>`<button class="fc${it.off?" off":""}" data-k="${it._k}">${foto(it,"ph")}<span class="star">${it._sub?"⭐ Destaque":"⭐ Assinatura"}</span><div class="bd"><h3>${esc(nome(it.n))}</h3>${it.d?`<p>${esc(txt(it.d).replace(/\n/g," "))}</p>`:""}${preco(it.p)}${tags({...it,n:"_"},c).replace('<span class="tag o">Assinatura</span>',"")}</div></button>`).join("")}</div>`;
+    html+=`<div class="list">${rest.map(it=>`<button class="row${esgotado(it)?" esg":""}" data-k="${it._k}">${esgotado(it)?`<span class="canto">${COWBOY}Acabou</span>`:""}${foto(it,"th")}<div><h3>${esc(nome(it.n))}</h3>${it.d&&!esgotado(it)?`<p>${esc(txt(it.d).replace(/\n/g," · ").replace(/· ·/g,"·"))}</p>`:""}${tags(it,c)}${esgotado(it)?AVISO:""}</div>${preco(it.p)}</button>`).join("")}</div></section>`;
   });
   box.innerHTML=html||'<p class="empty">Nada encontrado. Tente outra palavra.</p>';
   document.getElementById("nav").innerHTML=nav;
@@ -227,7 +244,7 @@ function abre(k){
     const one=g.min===1&&g.max===1,req=g.min>0;
     const lab=one?"Escolha 1":req?`Escolha ${g.min} a ${g.max}`:g.max>1?`Opcional · até ${g.max}`:"Opcional";
     return `<div class="grp"><h4>${esc(nome(txt(g.t)).replace(/\?$/,""))}<span class="${req?"req":""}">${lab}</span></h4><ul>${g.i.map(x=>{const [n,p]=Array.isArray(x)?x:[x,0];return `<li><span>${esc(nome(txt(n)))}</span>${p?`<em>+ R$ ${reais(p)}</em>`:""}</li>`}).join("")}</ul></div>`}).join("");
-  document.getElementById("panel").innerHTML=`${foto(it,"ph")}<div class="bd"><h3>${esc(nome(it.n))}</h3>${tags(it,c)}${it.d?`<p class="desc">${esc(txt(it.d))}</p>`:""}${preco(it.p)}${grupos}
+  document.getElementById("panel").innerHTML=`${foto(it,"ph")}<div class="bd"><h3>${esc(nome(it.n))}</h3>${tags(it,c)}${esgotado(it)?AVISO:""}${it.d?`<p class="desc">${esc(txt(it.d))}</p>`:""}${preco(it.p)}${grupos}
     <div class="cta">🛎️ <b>Peça no totem de autoatendimento.</b> Pague no totem, guarde seu código de 5 dígitos e retire no balcão quando ele aparecer como <b>Pronto</b> na TV.</div></div>`;
   const ph=document.querySelector("#panel .ph");const b=document.createElement("button");b.className="x";b.setAttribute("aria-label","Fechar");b.textContent="✕";b.onclick=fecha;(ph||document.getElementById("panel")).prepend(b);
   document.getElementById("sheet").classList.add("on");document.body.style.overflow="hidden";history.pushState({m:1},"");

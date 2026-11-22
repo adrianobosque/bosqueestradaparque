@@ -93,7 +93,7 @@ main,.wrap{overflow-x:clip}
 .tag.x{background:var(--rust);color:var(--creme)}
 .off{opacity:.45}
 /* acabou neste fds: fica no cardápio com aviso, sem sumir */
-.esg .th,.esg .ph,.esg h3,.esg p,.esg .pr{filter:grayscale(.85);opacity:.55}
+.esg h3,.esg p,.esg .pr{opacity:.6}
 .row.esg{position:relative}
 .acabou{display:flex;align-items:center;gap:9px;margin-top:7px;padding:7px 10px 7px 7px;border-radius:12px;background:linear-gradient(135deg,rgba(225,132,4,.16),rgba(166,72,40,.16));border:1px dashed rgba(225,132,4,.6);max-width:340px}
 .acabou svg{width:34px;height:34px;flex:none}
@@ -264,7 +264,9 @@ try{if(localStorage.getItem("bosque_how_visto"))document.getElementById("how").o
 const LIVE="https://cardapio-bosque.adriano-944.workers.dev/";
 function pega(u,ms){const c=new AbortController();setTimeout(()=>c.abort(),ms);return fetch(u,{signal:c.signal}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{if(!d.cats||!d.cats.length)throw 0;return d})}
 let ULT="";
+const FOTOS={};
 function aplica(d){
+  d.cats.forEach(c=>c.i.forEach(it=>{const k=nome(it.n).toLowerCase();if(it.img)FOTOS[k]=it.img;else if(FOTOS[k])it.img=FOTOS[k]}));
   const sig=JSON.stringify(d.cats);if(sig===ULT)return;ULT=sig;IDX.length=0;
   // agrupa por tema (funciona com os nomes do delivery e com os da base de produtos)
   const TEMA=[[/caf[eé]|manh/i,"Café da manha"],[/almo|parrilla|bbq|prato/i,"Da parrilla"],[/especia|sandu|lanche/i,"Especiais da estrada"],[/por[cç]/i,"Porções"],[/cerve|drink|chopp|dose|vinho|caipi|bebida alco/i,"Cervejas e drinks"],[/bebida|refri|suco|[áa]gua|soda/i,"Bebidas"],[/sobremesa|doce/i,"Sobremesas"]];
@@ -276,7 +278,7 @@ function aplica(d){
 }
 // 1) mostra na hora a cópia do site; 2) confere a Zig ao vivo e troca só se algo mudou
 const local=pega("../data/menu.json?"+Date.now(),8000).then(aplica);
-const vivo=LIVE?pega(LIVE+"?"+Date.now(),20000).then(aplica):Promise.reject();
+const vivo=LIVE?Promise.all([pega(LIVE+"?"+Date.now(),20000),local.catch(()=>0)]).then(([d])=>aplica(d)):Promise.reject();
 Promise.any([local,vivo]).catch(()=>{document.getElementById("menu").innerHTML='<p class="empty">Não foi possível carregar o cardápio agora. Tente novamente em instantes.</p>'});
 </script>
 </body>

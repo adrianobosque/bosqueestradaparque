@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T22:09:55.848416+00:00",
+ "updated": "2026-11-22T23:10:23.538068+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -62,39 +62,42 @@
   ]
  },
  "semana": {
-  "post": "https://www.instagram.com/p/DfyY79EjaoH/",
-  "publicado": "2026-11-16T03:27:50+0000",
+  "post": "https://www.instagram.com/p/DgD6xktEbxg/",
+  "publicado": "2026-11-22T22:50:37+0000",
   "itens": [
    {
-    "data": "20/11",
-    "artista": "Blind Smoke",
-    "show": "12h30",
-    "obs": "Feriado",
-    "cafe": "10h",
-    "foto": "data/img/18134884681741838_1.jpg"
-   },
-   {
-    "data": "21/11",
-    "artista": "Gu Salvator",
+    "data": "28/11",
+    "artista": "Leo Basilio",
     "show": "12h30",
     "cafe": "10h",
-    "foto": "data/img/18134884681741838_2.jpg"
+    "foto": "data/img/18654287611044009_1.jpg"
    },
    {
-    "data": "22/11",
-    "artista": "Johnny Voxx",
+    "data": "29/11",
+    "artista": "Geraldo Barba Blue",
     "show": "13h",
     "cafe": "8h",
-    "foto": "data/img/18134884681741838_3.jpg"
+    "foto": "data/img/18654287611044009_2.jpg"
    }
   ]
  },
  "perfil": {
-  "seguidores": 44318,
-  "posts": 626,
+  "seguidores": 44317,
+  "posts": 627,
   "views": 7518096
  },
  "posts": [
+  {
+   "id": "18654287611044009",
+   "categoria": "musica",
+   "data_evento": "29/11",
+   "horario": "10h",
+   "titulo": "📅 28–29/11 · Fim de semana com música ao vivo",
+   "legenda": "📅 28–29/11 · Fim de semana com música ao vivo\n\nFechando novembro na estrada, com café western e show no Bosque 🎸\n\n🗓 Sáb 28 · Leo Basilio — café 10h, almoço 12h, show 12h30\n\n🗓 Dom 29 · Geraldo Barba Blue — café 8h, almoço 12h, show 13h\n\n📍 Km 94 da Rota SP-312, Itu · Sem reserva · Pet friendly · Sem couvert\n\n☔ Em caso de chuva, o show pode ser cancelado sem aviso prévio.\n\nManda pra quem vai pegar a ",
+   "imagem": "data/img/18654287611044009.jpg",
+   "permalink": "https://www.instagram.com/p/DgD6xktEbxg/",
+   "publicado": "2026-11-22T22:50:37+0000"
+  },
   {
    "id": "18082259081387843",
    "categoria": "novidades",
@@ -402,17 +405,6 @@
    "imagem": "data/img/18117946058054737.jpg",
    "permalink": "https://www.instagram.com/reel/DeXKG35Rus6/",
    "publicado": "2026-10-11T17:27:37+0000"
-  },
-  {
-   "id": "18107104802245233",
-   "categoria": "novidades",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "Sempre top!! 🤠✌🏻",
-   "legenda": "Sempre top!! 🤠✌🏻",
-   "imagem": "data/img/18107104802245233.jpg",
-   "permalink": "https://www.instagram.com/reel/DeXMWxRkT5l/",
-   "publicado": "2026-10-11T17:27:21+0000"
   }
  ]
 }

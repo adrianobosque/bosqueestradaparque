@@ -291,7 +291,8 @@ function comEsg(d){if(!ESG||!ESG.length||d.fonte==="ao-vivo")return d;const vivo
 const aplicaBase=d=>{BASE=d;aplica(comEsg(d))};
 fetch(ADMIN+"?"+Date.now()).then(r=>r.json()).then(e=>{ESG=e.itens||[];if(BASE)aplica(comEsg(BASE))}).catch(()=>{});
 const local=pega("../data/menu.json?"+Date.now(),8000).then(aplicaBase);
-const vivo=LIVE?Promise.all([pega(LIVE+"?"+Date.now(),20000),local.catch(()=>0)]).then(([d])=>aplicaBase(d)):Promise.reject();
+const LIVE2="https://cardapio-bosque.adriano-944.workers.dev/"; // reserva: se o admin não responder
+const vivo=LIVE?Promise.all([pega(LIVE+"?"+Date.now(),12000).catch(()=>pega(LIVE2+"?"+Date.now(),15000)),local.catch(()=>0)]).then(([d])=>aplicaBase(d)):Promise.reject();
 Promise.any([local,vivo]).catch(()=>{document.getElementById("menu").innerHTML='<p class="empty">Não foi possível carregar o cardápio agora. Tente novamente em instantes.</p>'});
 </script>
 </body>

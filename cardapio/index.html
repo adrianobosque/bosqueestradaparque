@@ -93,7 +93,9 @@ main,.wrap{overflow-x:clip}
 .tag.x{background:var(--rust);color:var(--creme)}
 .off{opacity:.45}
 /* acabou neste fds: fica no cardápio com aviso, sem sumir */
-.esg h3,.esg p,.esg .pr{opacity:.6}
+.esg h3,.esg p,.esg .pr,.esg .tag{opacity:.5}.esg .th{opacity:.55}
+.dica{display:none;position:absolute;top:36px;right:8px;z-index:3;background:#2B2317;border:1px solid rgba(225,132,4,.6);color:var(--creme);border-radius:10px;padding:7px 10px;font-size:12.5px;line-height:1.3;max-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.row.esg.ab .dica{display:block}
 .row.esg{position:relative}
 .acabou{display:flex;align-items:center;gap:9px;margin-top:7px;padding:7px 10px 7px 7px;border-radius:12px;background:linear-gradient(135deg,rgba(225,132,4,.16),rgba(166,72,40,.16));border:1px dashed rgba(225,132,4,.6);max-width:340px}
 .acabou svg{width:34px;height:34px;flex:none}
@@ -215,7 +217,7 @@ function tags(it,c){
 // cowboy triste (desenho próprio)
 const COWBOY=`<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="40" r="17" fill="#F2B53A"/><path d="M24 39q3-3 6 0M34 39q3-3 6 0" stroke="#3B2412" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M25 50q7-6 14 0" stroke="#3B2412" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M41 42c0 0-2.6 3.6-2.6 5.2a2.6 2.6 0 0 0 5.2 0C43.6 45.6 41 42 41 42z" fill="#5BB6E8"/><path d="M20 25c0-9 5-15 12-15s12 6 12 15c-7 2-17 2-24 0z" fill="#8A5326"/><path d="M20.5 23.5c7 2 16 2 23 0v3c-7 2-16 2-23 0z" fill="#3B2412"/><path d="M5 25c5 6 49 6 54 0 1 5-9 9-27 9S4 30 5 25z" fill="#A5692F"/></svg>`;
 const esgotado=it=>it.esg||it.off;
-const AVISO=`<div class="acabou">${COWBOY}<div><b>Acabou neste fds</b><span>Saiu tanto que acabou! Semana que vem tem mais — volta pra pegar o seu.</span></div></div>`;
+const AVISO=`<div class="acabou">${COWBOY}<div><b>Acabou neste fds</b><span>Semana que vem tem mais 🤠</span></div></div>`;
 let DATA=[],IDX=[];
 function render(q){
   q=(q||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
@@ -230,7 +232,7 @@ function render(q){
     const naoSig=it=>q||!sig.includes(it),rest=[...its.filter(it=>naoSig(it)&&!esgotado(it)),...its.filter(it=>naoSig(it)&&esgotado(it))];
     html+=`<section class="cat" id="${id}"><div class="cat-head${c.img&&!q?"":" plain"}" ${c.img&&!q?`style="background-image:url('${c.img}')"`:""}><div><h2><span class="ic">${c.ic}</span>${esc(c.t)}</h2>${c.sub?`<p>${esc(c.sub)}</p>`:""}</div></div>`;
     if(sig.length)html+=`<div class="feat">${sig.map(it=>`<button class="fc${it.off?" off":""}" data-k="${it._k}">${foto(it,"ph")}<span class="star">${it._sub?"⭐ Destaque":"⭐ Assinatura"}</span><div class="bd"><h3>${esc(nome(it.n))}</h3>${it.d?`<p>${esc(txt(it.d).replace(/\n/g," "))}</p>`:""}${preco(it.p)}${tags({...it,n:"_"},c).replace('<span class="tag o">Assinatura</span>',"")}</div></button>`).join("")}</div>`;
-    html+=`<div class="list">${rest.map(it=>`<button class="row${esgotado(it)?" esg":""}" data-k="${it._k}">${esgotado(it)?`<span class="canto">${COWBOY}Acabou</span>`:""}${foto(it,"th")}<div><h3>${esc(nome(it.n))}</h3>${it.d&&!esgotado(it)?`<p>${esc(txt(it.d).replace(/\n/g," · ").replace(/· ·/g,"·"))}</p>`:""}${tags(it,c)}${esgotado(it)?AVISO:""}</div>${preco(it.p)}</button>`).join("")}</div></section>`;
+    html+=`<div class="list">${rest.map(it=>`<button class="row${esgotado(it)?" esg":""}" data-k="${it._k}">${esgotado(it)?`<span class="canto" data-acabou>${COWBOY}Acabou</span><span class="dica">Saiu tudo neste fds. Semana que vem tem mais! 🤠</span>`:""}${foto(it,"th")}<div><h3>${esc(nome(it.n))}</h3>${it.d&&!esgotado(it)?`<p>${esc(txt(it.d).replace(/\n/g," · ").replace(/· ·/g,"·"))}</p>`:""}${tags(it,c)}</div>${preco(it.p)}</button>`).join("")}</div></section>`;
   });
   box.innerHTML=html||'<p class="empty">Nada encontrado. Tente outra palavra.</p>';
   document.getElementById("nav").innerHTML=nav;
@@ -252,7 +254,7 @@ function abre(k){
 function fecha(){const s=document.getElementById("sheet");if(!s.classList.contains("on"))return;s.classList.remove("on");document.body.style.overflow="";}
 document.getElementById("sheet").addEventListener("click",e=>{if(e.target.id==="sheet")history.back()});
 addEventListener("popstate",fecha);addEventListener("keydown",e=>{if(e.key==="Escape")history.back()});
-document.getElementById("menu").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)abre(+b.dataset.k)});
+document.getElementById("menu").addEventListener("click",e=>{const ac=e.target.closest("[data-acabou]");if(ac){e.stopPropagation();const r=ac.closest(".row");document.querySelectorAll(".row.ab").forEach(x=>x!==r&&x.classList.remove("ab"));r.classList.toggle("ab");return}document.querySelectorAll(".row.ab").forEach(x=>x.classList.remove("ab"));const b=e.target.closest("[data-k]");if(b)abre(+b.dataset.k)});
 document.getElementById("q").addEventListener("input",e=>render(e.target.value));
 function spy(){
   const links=[...document.querySelectorAll("#nav a")];const secs=links.map(a=>document.getElementById(a.dataset.c));

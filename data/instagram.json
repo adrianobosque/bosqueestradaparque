@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T15:29:50.160973+00:00",
+ "updated": "2026-11-24T16:39:15.568808+00:00",
  "agenda": {
   "mes": "Dezembro",
   "cartaz": "data/img/18094237751234927.jpg",
@@ -72,11 +72,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44292,
-  "posts": 630,
+  "seguidores": 44290,
+  "posts": 631,
   "views": 7533750
  },
  "posts": [
+  {
+   "id": "18116206142614901",
+   "categoria": "musica",
+   "data_evento": null,
+   "horario": "1h10",
+   "titulo": "O destino de quem vive a estrada 🏍️🌲",
+   "legenda": "O destino de quem vive a estrada 🏍️🌲\n\nVenha de qualquer direção. Toda estrada leva ao km 94 ✌🏻\n\n📍 Itupeva 20 min · Jundiaí 30 · Indaiatuba 35 · Porto Feliz 40 · Campinas 45 · Sorocaba 50 · Piracicaba 1h10 · São Paulo 1h15 · Santos 1h50\n\nChegando aqui, tem Café Western Texano, parrilla na brasa, música ao vivo no nosso Chevy D60 1973, motos e carros antigos, e mesa cheia no meio do bosque. Top 10 d",
+   "imagem": "data/img/18116206142614901.jpg",
+   "permalink": "https://www.instagram.com/reel/DgIUf4IxA2Y/",
+   "publicado": "2026-11-24T15:53:42+0000"
+  },
   {
    "id": "18242513581318057",
    "categoria": "musica",
@@ -384,17 +395,6 @@
    "imagem": "data/img/18193270108393935.jpg",
    "permalink": "https://www.instagram.com/p/Dery4EURIqN/",
    "publicado": "2026-10-19T17:30:45+0000"
-  },
-  {
-   "id": "18119687309318191",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "🎸🌲 TEM MOMENTOS QUE A GENTE NÃO QUER QUE ACABEM! ❤️",
-   "legenda": "🎸🌲 TEM MOMENTOS QUE A GENTE NÃO QUER QUE ACABEM! ❤️\n\nA música começa, a comida chega à mesa, os amigos se encontram e, de repente, a gente percebe que a vida acontece justamente nesses momentos. ✨\n\nCom a energia incrível da Pamela Rock Station, o Bosque ganhou mais uma daquelas tardes que ficam na memória. 🤘🔥\n\nRock’n’roll, mesas fartas, sorrisos, natureza e gente aproveitando a vida sem pressa.\n\nP",
-   "imagem": "data/img/18119687309318191.jpg",
-   "permalink": "https://www.instagram.com/reel/DecZyY4y-Cs/",
-   "publicado": "2026-10-13T18:02:03+0000"
   }
  ]
 }

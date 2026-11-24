@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T11:49:14.347672+00:00",
+ "updated": "2026-11-24T12:58:01.992258+00:00",
  "agenda": {
   "mes": "Novembro",
   "cartaz": "data/img/17992146621062410.jpg",
@@ -82,11 +82,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44300,
-  "posts": 627,
-  "views": 7533749
+  "seguidores": 44297,
+  "posts": 628,
+  "views": 7533750
  },
  "posts": [
+  {
+   "id": "18155981590531606",
+   "categoria": "musica",
+   "data_evento": "28/11",
+   "horario": "10h",
+   "titulo": "Leo Basilio ao vivo",
+   "legenda": "📅 28/11 · Leo Basilio ao vivo\n\nSábado tem almoço e música ao vivo no meio do bosque\n\n 🎸 Café Western desde as 10h, show às 12h30.\n\n☔ Em caso de chuva, o show pode ser cancelado sem aviso prévio.\n\nManda pra quem vai pegar a estrada com você no sábado 🏍️",
+   "imagem": "data/img/18155981590531606.jpg",
+   "permalink": "https://www.instagram.com/reel/DgH_8dNRJv0/",
+   "publicado": "2026-11-24T12:53:37+0000"
+  },
   {
    "id": "18654287611044009",
    "categoria": "musica",
@@ -394,17 +405,6 @@
    "imagem": "data/img/18178559932438072.jpg",
    "permalink": "https://www.instagram.com/p/Deb_D0lxLTP/",
    "publicado": "2026-10-13T14:08:19+0000"
-  },
-  {
-   "id": "18117946058054737",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": null,
-   "titulo": "Super show de giovanibossoficial duo no nosso almoço de domingo 🤠✌🏻",
-   "legenda": "Super show de giovanibossoficial duo no nosso almoço de domingo 🤠✌🏻",
-   "imagem": "data/img/18117946058054737.jpg",
-   "permalink": "https://www.instagram.com/reel/DeXKG35Rus6/",
-   "publicado": "2026-10-11T17:27:37+0000"
   }
  ]
 }

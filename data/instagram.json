@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T14:18:24.492476+00:00",
+ "updated": "2026-11-24T15:29:50.160973+00:00",
  "agenda": {
   "mes": "Dezembro",
   "cartaz": "data/img/18094237751234927.jpg",
@@ -72,11 +72,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44291,
-  "posts": 629,
+  "seguidores": 44292,
+  "posts": 630,
   "views": 7533750
  },
  "posts": [
+  {
+   "id": "18242513581318057",
+   "categoria": "musica",
+   "data_evento": "25/12",
+   "horario": "10h",
+   "titulo": "E quem ai ja esta no clima de natal?! 🎅🏻",
+   "legenda": "E quem ai ja esta no clima de natal?! 🎅🏻 \n\nPelo 2º ano seguido, o Natal no Bosque tem mesa farta, brasa acesa e super show da Pamela RockStation 🎄🎸\n\n📅 25/12 · Almoço especial de Natal\n\nCafé Western desde as 10h, almoço a partir das 12h e show às 12h30.\n\n📍 Km 94 da Rota SP-312, Itu · Pet friendly · Sem couvert\n\n☔ Em caso de chuva, o show pode ser cancelado sem aviso prévio.\n\nMarca quem vai passar o",
+   "imagem": "data/img/18242513581318057.jpg",
+   "permalink": "https://www.instagram.com/reel/DgILJ7hRACE/",
+   "publicado": "2026-11-24T14:32:58+0000"
+  },
   {
    "id": "18155981590531606",
    "categoria": "musica",
@@ -384,17 +395,6 @@
    "imagem": "data/img/18119687309318191.jpg",
    "permalink": "https://www.instagram.com/reel/DecZyY4y-Cs/",
    "publicado": "2026-10-13T18:02:03+0000"
-  },
-  {
-   "id": "18130662466686961",
-   "categoria": "musica",
-   "data_evento": "17/10",
-   "horario": "12h30",
-   "titulo": "🔥🏍️ A ESTRADA TEM DESTINO CERTO NESTE FINAL DE SEMANA! 🌲🤘",
-   "legenda": "🔥🏍️ A ESTRADA TEM DESTINO CERTO NESTE FINAL DE SEMANA! 🌲🤘\n\nDois dias de música boa, comida de verdade, natureza e aquela energia que só quem conhece o Bosque sabe!\n\n🎸 SÁBADO • 17/10\nFábio Buzatti — One Man Band Experience\n🕧 Música ao vivo a partir das 12h30\n\n🎸 DOMINGO • 18/10\nJohnny Voxx\n🕐 Música ao vivo a partir das 13h\n\n☕🤠 CAFÉ WESTERN TEXANO — NOVOS HORÁRIOS!\n\nA partir deste sábado, nosso café ",
-   "imagem": "data/img/18130662466686961.jpg",
-   "permalink": "https://www.instagram.com/p/Deb_ezoRcO5/",
-   "publicado": "2026-10-13T14:11:59+0000"
   }
  ]
 }

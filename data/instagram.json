@@ -1,62 +1,52 @@
 {
- "updated": "2026-11-24T12:58:01.992258+00:00",
+ "updated": "2026-11-24T14:18:24.492476+00:00",
  "agenda": {
-  "mes": "Novembro",
-  "cartaz": "data/img/17992146621062410.jpg",
+  "mes": "Dezembro",
+  "cartaz": "data/img/18094237751234927.jpg",
   "itens": [
    {
-    "data": "01/11",
-    "artista": "Bruno Vallente",
-    "show": "13h"
-   },
-   {
-    "data": "02/11",
-    "artista": "Duo Aragramma",
-    "show": "12h30"
-   },
-   {
-    "data": "07/11",
+    "data": "05/12",
     "artista": "Phil Aygah",
     "show": "12h30"
    },
    {
-    "data": "08/11",
-    "artista": "Pamela Rock Station",
+    "data": "06/12",
+    "artista": "Duo Aragramma",
     "show": "13h"
    },
    {
-    "data": "14/11",
-    "artista": "Ani Belle",
-    "show": "12h30"
-   },
-   {
-    "data": "15/11",
-    "artista": "Rafa LeBeats",
-    "show": "13h"
-   },
-   {
-    "data": "20/11",
-    "artista": "Blind Smoke",
-    "show": "12h30"
-   },
-   {
-    "data": "21/11",
+    "data": "12/12",
     "artista": "Gu Salvator",
     "show": "12h30"
    },
    {
-    "data": "22/11",
-    "artista": "Johnny Voxx",
+    "data": "13/12",
+    "artista": "Rafa LeBeats",
     "show": "13h"
    },
    {
-    "data": "28/11",
-    "artista": "Leo Basílio",
+    "data": "19/12",
+    "artista": "Fabio Buzatti",
     "show": "12h30"
    },
    {
-    "data": "29/11",
+    "data": "20/12",
+    "artista": "Leo Basilio",
+    "show": "13h"
+   },
+   {
+    "data": "25/12",
+    "artista": "Pamela RockStation",
+    "show": "12h30"
+   },
+   {
+    "data": "26/12",
     "artista": "Geraldo Barba Blue",
+    "show": "12h30"
+   },
+   {
+    "data": "27/12",
+    "artista": "Johnny Voxx",
     "show": "13h"
    }
   ]
@@ -82,8 +72,8 @@
   ]
  },
  "perfil": {
-  "seguidores": 44297,
-  "posts": 628,
+  "seguidores": 44291,
+  "posts": 629,
   "views": 7533750
  },
  "posts": [
@@ -352,6 +342,17 @@
    "publicado": "2026-10-22T15:25:27+0000"
   },
   {
+   "id": "17992146621062410",
+   "categoria": "musica",
+   "data_evento": "02/11",
+   "horario": "13h",
+   "titulo": "🏍️🔥 NOVEMBRO CHEGANDO COM MUITA MÚSICA, ESTRADA E BONS ENCONTROS! 🌲🎸",
+   "legenda": "🏍️🔥 NOVEMBRO CHEGANDO COM MUITA MÚSICA, ESTRADA E BONS ENCONTROS! 🌲🎸\n\nTem feriado, tem final de semana prolongado e tem muita música boa esperando por você no Bosque!\n\nPrepare o roteiro, chame os amigos e venha viver o melhor da estrada com comida de verdade, natureza e aquela energia que só o Bosque tem! 🤘\n\n🎶 CONFIRA NOSSA PROGRAMAÇÃO DE NOVEMBRO:\n\n🔥 01 e 02/11 | Feriado de Finados\n• Dom 01/11 — ",
+   "imagem": "data/img/17992146621062410.jpg",
+   "permalink": "https://www.instagram.com/p/DeuKZG3x3DV/",
+   "publicado": "2026-10-20T15:35:31+0000"
+  },
+  {
    "id": "18123049153924049",
    "categoria": "musica",
    "data_evento": "31/10",
@@ -394,17 +395,6 @@
    "imagem": "data/img/18130662466686961.jpg",
    "permalink": "https://www.instagram.com/p/Deb_ezoRcO5/",
    "publicado": "2026-10-13T14:11:59+0000"
-  },
-  {
-   "id": "18178559932438072",
-   "categoria": "musica",
-   "data_evento": null,
-   "horario": "10h",
-   "titulo": "🤠☕ O CAFÉ WESTERN TEXANO AGORA ACOMPANHA O RITMO DA SUA ESTRADA! 🏍️🌲",
-   "legenda": "🤠☕ O CAFÉ WESTERN TEXANO AGORA ACOMPANHA O RITMO DA SUA ESTRADA! 🏍️🌲\n\nA gente ouviu, observou e entendeu: cada pessoa tem seu horário de pegar a estrada. E o Bosque quer fazer parte dessa jornada!\n\nPor isso, a partir de 17 de outubro, nosso Café Western Texano em bandejas ganha novos horários:\n\n🔥 SÁBADOS E FERIADOS\n☕ A partir das 10h\n🍳 Bandejas disponíveis até as 16h30\n\n☀️ DOMINGOS\n☕ Tudo segue no",
-   "imagem": "data/img/18178559932438072.jpg",
-   "permalink": "https://www.instagram.com/p/Deb_D0lxLTP/",
-   "publicado": "2026-10-13T14:08:19+0000"
   }
  ]
 }

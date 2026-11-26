@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T22:46:35.109045+00:00",
+ "updated": "2026-11-26T23:45:32.648638+00:00",
  "agenda": {
   "mes": "Dezembro",
   "cartaz": "data/img/18094237751234927.jpg",
@@ -72,11 +72,22 @@
   ]
  },
  "perfil": {
-  "seguidores": 44292,
-  "posts": 631,
+  "seguidores": 44295,
+  "posts": 632,
   "views": 7544311
  },
  "posts": [
+  {
+   "id": "18086625107377639",
+   "categoria": "musica",
+   "data_evento": "29/11",
+   "horario": "8h",
+   "titulo": "Geraldo Barba Blue ao vivo",
+   "legenda": "📅 29/11 · Geraldo Barba Blue ao vivo\n\nDomingo tem blues na estrada \n\n🎸 Café Western desde as 8h, almoço a partir das 12h e show às 13h.\n\n☔ Em caso de chuva, o show pode ser cancelado sem aviso prévio.\n\nManda pra quem vai domingo com você 🏍️",
+   "imagem": "data/img/18086625107377639.jpg",
+   "permalink": "https://www.instagram.com/reel/DgOPFsiPZ7K/",
+   "publicado": "2026-11-26T23:00:06+0000"
+  },
   {
    "id": "18121066228800695",
    "categoria": "musica",
@@ -384,17 +395,6 @@
    "imagem": "data/img/18123049153924049.jpg",
    "permalink": "https://www.instagram.com/p/DeuCpCxxNgV/",
    "publicado": "2026-10-20T14:27:35+0000"
-  },
-  {
-   "id": "18193270108393935",
-   "categoria": "musica",
-   "data_evento": "24/10",
-   "horario": "12h30",
-   "titulo": "🔥🏍️ MAIS UM FINAL DE SEMANA DE ROCK, ESTRADA E BONS MOMENTOS NO BOSQUE! 🌲🤘",
-   "legenda": "🔥🏍️ MAIS UM FINAL DE SEMANA DE ROCK, ESTRADA E BONS MOMENTOS NO BOSQUE! 🌲🤘\n\nA receita é aquela que a gente ama: música boa, comida de verdade, natureza, amigos e muita energia positiva!\n\n🎸 SÁBADO • 24/10\nPhil Aygah\n🕧 Música ao vivo a partir das 12h30\n\n🎤 DOMINGO • 25/10\nPamela Rock Station\n🕐 Música ao vivo a partir das 13h\n\n🇧🇷 ATENÇÃO AO HORÁRIO DE DOMINGO!\n\nExcepcionalmente, devido ao segundo turn",
-   "imagem": "data/img/18193270108393935.jpg",
-   "permalink": "https://www.instagram.com/p/Dery4EURIqN/",
-   "publicado": "2026-10-19T17:30:45+0000"
   }
  ]
 }
